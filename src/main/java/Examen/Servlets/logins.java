@@ -68,13 +68,13 @@ public class logins extends HttpServlet {
                 request.setAttribute("logins",logins);
 
 
-                RequestDispatcher vista = request.getRequestDispatcher("jsps/vistaLogins.jsp");
+                RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/vistaLogins.jsp");
 
                 vista.forward(request, response);
             }
 
             else{
-                RequestDispatcher vista = request.getRequestDispatcher("jsps/page400.jsp");
+                RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
                 vista.forward(request, response);
             }
 

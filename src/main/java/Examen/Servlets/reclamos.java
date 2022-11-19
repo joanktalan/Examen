@@ -72,7 +72,7 @@ public class reclamos extends HttpServlet {
         model.cargarLogin(login);
         
         //Vísta de la Pagina
-        RequestDispatcher vista = request.getRequestDispatcher("jsps/vistaReclamos.jsp");
+        RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/vistaReclamos.jsp");
         
         vista.forward(request, response);
             
@@ -80,7 +80,7 @@ public class reclamos extends HttpServlet {
         }
         
         else{
-            RequestDispatcher vista = request.getRequestDispatcher("jsps/erorres/page401.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
             vista.forward(request, response);
         }
         

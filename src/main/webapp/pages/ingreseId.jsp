@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +15,8 @@
             <input type="submit" value="Enviar Datos">
         </form>
         
-        <a href="http://localhost:8080"> Volver al principio </a>
-        
+       
+        <br>
+        <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/">Volver al principio</a>
     </body>
 </html>

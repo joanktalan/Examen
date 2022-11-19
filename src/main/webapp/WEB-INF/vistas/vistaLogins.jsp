@@ -12,7 +12,7 @@
         
         
         <h1 style='text-align:center'>Logins del id: ${id}</h1>
-          <p><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/Login">volver</a></p>
+          <p><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/pages/ingreseId.jsp">volver</a></p>
         <p style='text-align:center'>Fecha------Hora</p>
         
         <ul>
