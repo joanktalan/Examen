@@ -5,6 +5,7 @@
 package Examen.Servlets;
 
 import Examen.DAOS.IMPL.LoginDAOHardCode;
+import Examen.DAOS.IMPL.LoginDAOMySQL;
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DTOS.AdministradorDTO;
 import Examen.DTOS.LoginDTO;
@@ -46,7 +47,7 @@ public class logins extends HttpServlet {
             int id;
             //PersonaDTO persona=null;
 
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOHardCode());
+            Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOMySQL());
 
             boolean isErrorPage400=true;            //ID INCORRECTO X
             boolean isErrorPage401=true;            //NO ES ADMINISTRADOR

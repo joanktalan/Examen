@@ -29,17 +29,10 @@ public class LoginDAOMySQL implements LoginDAO{
     
     
     
-    private Collection<LoginDTO> logins;
-
-    public LoginDAOMySQL(Collection<LoginDTO> logins) {
-        this.logins = new ArrayList<>();
-    }
-    
-    
-    
 
     @Override
     public Collection<LoginDTO> obtenerLogins(int id) {
+        Collection<LoginDTO> logins = new ArrayList<>();
         try {
             Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
             
@@ -65,7 +58,18 @@ public class LoginDAOMySQL implements LoginDAO{
 
     @Override
     public void cargarLogin(LoginDTO login) {
-        logins.add(login);
+      
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            
+            
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`logins` (`date`, `time`, `personaid2`) VALUES ('"+ login.getDate() +"', '"+login.getTime()+"', '"+login.getId()+"')");
+    
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al obtener login", ex);
+        }
     }
     
 }

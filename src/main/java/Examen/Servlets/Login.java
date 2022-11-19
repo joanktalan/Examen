@@ -32,8 +32,7 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
-         RequestDispatcher vista = request.getRequestDispatcher("htmls/Login.html");
-
+                RequestDispatcher vista = request.getRequestDispatcher("htmls/ingreseId.html");
                 vista.forward(request, response);
         
         

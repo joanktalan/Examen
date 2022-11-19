@@ -4,13 +4,18 @@
  */
 package Examen.Servlets;
 
+import Examen.DAOS.IMPL.LoginDAOHardCode;
+import Examen.DAOS.IMPL.LoginDAOMySQL;
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DAOS.IMPL.ReclamoDAOMySQL;
+import Examen.DTOS.LoginDTO;
 import Examen.DTOS.PersonaDTO;
 import Examen.DTOS.ReclamoDTO;
 import Examen.Modelo.Modelo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,7 +45,7 @@ public class reclamos extends HttpServlet {
         
         boolean isErrorPage=true;
         
-        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL(), new LoginDAOMySQL());
         
         String usuario=request.getParameter("user");
         
@@ -61,14 +66,21 @@ public class reclamos extends HttpServlet {
         request.setAttribute("apellido",apellido);
         request.setAttribute("reclamos",reclamos);
         
+        
+        //cargando el login
+        LoginDTO login = new LoginDTO(persona.getId(),LocalDate.now(),LocalTime.now());
+        model.cargarLogin(login);
+        
+        //Vísta de la Pagina
         RequestDispatcher vista = request.getRequestDispatcher("jsps/vistaReclamos.jsp");
         
         vista.forward(request, response);
             
+        
         }
         
         else{
-            RequestDispatcher vista = request.getRequestDispatcher("jsps/page401.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("jsps/erorres/page401.jsp");
             vista.forward(request, response);
         }
         

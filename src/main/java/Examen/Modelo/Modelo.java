@@ -41,6 +41,12 @@ public class Modelo {
         this.personaDAO = personaDAO;
         this.loginDAO = loginDAO;
     }
+
+    public Modelo(PersonaDAO personaDAO, ReclamoDAO reclamoDAO, LoginDAO loginDAO) {
+        this.personaDAO = personaDAO;
+        this.reclamoDAO = reclamoDAO;
+        this.loginDAO = loginDAO;
+    }
     
     
     
