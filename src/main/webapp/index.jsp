@@ -15,9 +15,9 @@
     <body>
         <div></div>
         
-        <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/reclamos">Ir a Login para Reclamos</a>
+        <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/parcial2">Ir a Login para Reclamos</a>
         <br>
-         <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/logins">Ver Logins</a>
+         <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/verLogins">Ver Logins</a>
         <br>
        
         

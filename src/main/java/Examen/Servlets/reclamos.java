@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
-public class reclamos extends HttpServlet {
+public class Reclamos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,7 +55,33 @@ public class reclamos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.getRequestDispatcher("WEB-INF/pages/parcial2.jsp").forward(request, response);
+        processRequest(request, response);
+        
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+       
+        //me da curiosidad
+       
+        String usuario=(String) request.getSession().getAttribute("user"); 
+        String contrasenia=(String) request.getSession().getAttribute("contrasenia");
+        
+        PersonaDTO persona = model.obtenerPersona(usuario, contrasenia);
+            
+        String nombre=persona.getNombre();
+        String apellido=persona.getApellido();
+        
+        Collection<ReclamoDTO> reclamos = model.obtenerReclamos(persona);
+        
+        
+        request.setAttribute("nombre",nombre);
+        request.setAttribute("apellido",apellido);
+        request.setAttribute("reclamos",reclamos);
+        
+        //Vísta de la Pagina
+        RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/vistas/vistaReclamos.jsp");
+        
+        vista.forward(request, response);
+         
+//request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
     }
 
     /**
@@ -69,49 +95,8 @@ public class reclamos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //el usuario ingresa un nombre, ese nombre es buscado en la base de datos y si coincide se devuelve el usuario
-        
-        boolean isErrorPage=true;
-        
-        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL(), new LoginDAOMySQL());
-        
-        String usuario=request.getParameter("user");
-        
-        String contrasenia=request.getParameter("contrasenia");
-        
-        PersonaDTO persona = model.obtenerPersona(usuario, contrasenia);
-        
-        if(persona!=null){
-            isErrorPage=false;
-            
-        String nombre=persona.getNombre();
-        String apellido=persona.getApellido();
-        
-        Collection<ReclamoDTO> reclamos = model.obtenerReclamos(persona);
-        
-        
-        request.setAttribute("nombre",nombre);
-        request.setAttribute("apellido",apellido);
-        request.setAttribute("reclamos",reclamos);
-        
-        
-        //cargando el login
-        LoginDTO login = new LoginDTO(persona.getId(),LocalDate.now(),LocalTime.now());
-        model.cargarLogin(login);
-        
-        //Vísta de la Pagina
-        RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/vistaReclamos.jsp");
-        
-        vista.forward(request, response);
-            
-        
-        }
-        
-        else{
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
-            vista.forward(request, response);
-        }
-    }
+        processRequest(request, response);
+            }
 
     /**
      * Returns a short description of the servlet.

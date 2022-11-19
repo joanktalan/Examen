@@ -9,7 +9,7 @@
         
         <h1>Ingrese usuario y contraseña</h1>
         
-        <form action="/reclamos" method="post">
+        <form action="/parcial2" method="post">
             <input type="text" name="user" placeholder="Nombre de usuario">
             <br>
             <input type="text" name="contrasenia" placeholder="contrasenia">
