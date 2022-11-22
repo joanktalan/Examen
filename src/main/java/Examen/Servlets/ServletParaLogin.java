@@ -64,9 +64,7 @@ public class ServletParaLogin extends HttpServlet {
         model.cargarLogin(login);
         
         //Vísta de la Pagina
-        
-        request.getSession().setAttribute("user", usuario);
-        request.getSession().setAttribute("contrasenia", contrasenia);
+        request.getSession().setAttribute("usuario", persona);
         
         response.sendRedirect(request.getContextPath() + "/reclamos/all");
                 

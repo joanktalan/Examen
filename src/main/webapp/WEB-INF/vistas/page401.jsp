@@ -1,10 +1,5 @@
-<%-- 
-    Document   : page401
-    Created on : Nov 15, 2022, 8:53:31 PM
-    Author     : Joancito
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
     <head>

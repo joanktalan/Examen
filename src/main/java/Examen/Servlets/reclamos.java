@@ -59,21 +59,15 @@ public class Reclamos extends HttpServlet {
         
         Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
        
-        //me da curiosidad
+        //me da curiosidad, en realidad lo que tengo que hacer es meterle un setSession al usuario, mas facil en general...
        
-        String usuario=(String) request.getSession().getAttribute("user"); 
-        String contrasenia=(String) request.getSession().getAttribute("contrasenia");
         
-        PersonaDTO persona = model.obtenerPersona(usuario, contrasenia);
-            
-        String nombre=persona.getNombre();
-        String apellido=persona.getApellido();
-        
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
         Collection<ReclamoDTO> reclamos = model.obtenerReclamos(persona);
         
         
-        request.setAttribute("nombre",nombre);
-        request.setAttribute("apellido",apellido);
+        request.setAttribute("nombre",persona.getNombre());
+        request.setAttribute("apellido",persona.getApellido());
         request.setAttribute("reclamos",reclamos);
         
         //Vísta de la Pagina

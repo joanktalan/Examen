@@ -1,3 +1,5 @@
+<jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
+    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,10 +19,7 @@
         </form>
         
         <br>
-        
-        
-        <br>
-         <a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/">Volver al principio</a>
-         
+       
+       
     </body>
 </html>

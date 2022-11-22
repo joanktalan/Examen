@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
     
@@ -12,7 +13,6 @@
         
         
         <h1 style='text-align:center'>Logins del id: ${id}</h1>
-          <p><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/verLogins">volver</a></p>
         <p style='text-align:center'>Fecha------Hora</p>
         
         <ul>
