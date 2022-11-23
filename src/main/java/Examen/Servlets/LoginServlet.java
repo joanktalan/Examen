@@ -48,8 +48,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         //el usuario ingresa un nombre, ese nombre es buscado en la base de datos y si coincide se devuelve el usuario
         
-        boolean isErrorPage=true;
-        
         Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOMySQL());
         
         String usuario=request.getParameter("user");
@@ -59,7 +57,7 @@ public class LoginServlet extends HttpServlet {
         PersonaDTO persona = model.obtenerPersona(usuario, contrasenia);
         
         if(persona!=null){
-            isErrorPage=false;
+            
             
         
         //cargando el login

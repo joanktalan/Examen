@@ -42,30 +42,32 @@ public class VerLoginsServlet extends HttpServlet {
 
             id = Integer.parseInt(request.getParameter("id"));
 
-            boolean incorrecto=model.IdExiste(id);            //NO ES ADMINISTRADOR
+            boolean incorrecto=model.IdExiste(id);            
                
-
-            if(incorrecto){
-//                if(persona instanceof AdministradorDTO){          VER SI ESTO ES CORRECTO O SE PUEDE HACER MEJOR...
-                    Collection<LoginDTO> logins= model.obtenerLogins(id);
-                request.setAttribute("id",request.getParameter("id"));
-                request.setAttribute("logins",logins);
-
+            if (persona instanceof AdministradorDTO) {
+            if (incorrecto) {
+                Collection<LoginDTO> logins = model.obtenerLogins(id);
+                request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("logins", logins);
 
                 RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/vistaLogins.jsp");
 
                 vista.forward(request, response);
-//                }
-//                else{
-//                    RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
-//                vista.forward(request, response);
-//                }
-                
-            }
-            else{
+
+            } else {
                 RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
                 vista.forward(request, response);
             }
+        } else {
+            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
+            vista.forward(request, response);
+        }
+            
+            
+            
+            
+
+            
                    
     }
 
@@ -74,13 +76,15 @@ public class VerLoginsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        if(request.getParameter("id")==null){
+            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
+            vista.forward(request, response);
+        }
+        else{
+            processRequest(request, response);
+        }
         
-        //SI PONGO ESTO EN EL DOGET LO QUE ESTA EN PROCESSREQUEST DEJA DE FUNCIONAR (PARAMETRO POR URL)
-            
-        //request.getRequestDispatcher("WEB-INF/pages/ingreseId.jsp").forward(request, response);
         
-        
-        processRequest(request, response);
     }
 
     /**

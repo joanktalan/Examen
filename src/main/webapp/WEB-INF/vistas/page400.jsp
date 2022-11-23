@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -44,6 +44,7 @@ public class LoginFiltro implements Filter {
             //en caso de que no haya uno va directo a una de esas paginas....
 
         } else {
+            
             //este codigo es para enviarte a otra pagina en caso de que hayas ingresado mal las cosas...
             // httpRequest.getServletPath() me trae el servlet/jsp de origen, por ejemplo, "/perfil" o "/restringida"
             String origen = httpRequest.getServletPath();
@@ -51,7 +52,14 @@ public class LoginFiltro implements Filter {
             String queryS = "?origen=" + origen;
             // Lo mando para el servlet de login con el dato de origen como parámetro
             // "/login?origen=/perfil" o "/login?origen=/restringida"
-            request.getRequestDispatcher("/login" + queryS).forward(request, response);
+            //response.sendRedirect(request.getContextPath() + haciaDondeIba); 
+            
+            //String url=request.getContentType()+"/parcial2";
+            
+            request.getRequestDispatcher("/parcial2" + queryS).forward(request, response);
+            
+            //request.getRequestDispatcher("/login").forward(request, response);
+            
         }
 
     }
