@@ -73,6 +73,13 @@ public class VerLoginsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        //SI PONGO ESTO EN EL DOGET LO QUE ESTA EN PROCESSREQUEST DEJA DE FUNCIONAR (PARAMETRO POR URL)
+            
+        //request.getRequestDispatcher("WEB-INF/pages/ingreseId.jsp").forward(request, response);
+        
+        
         processRequest(request, response);
     }
 

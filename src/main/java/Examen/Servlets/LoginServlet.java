@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -65,11 +66,17 @@ public class LoginServlet extends HttpServlet {
         LoginDTO login = new LoginDTO(persona.getId(),LocalDate.now(),LocalTime.now());
         model.cargarLogin(login);
         
-        //Vísta de la Pagina
+        //Guardandando y seteando los datos y configuracion del usuario
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(20);
         request.getSession().setAttribute("usuario", persona);
         
-        response.sendRedirect(request.getContextPath() + "/reclamos/all");
-                
+        //esto lo voy a tener que cambiar cuando ponga lo del filtro ya que el login sirve ahora para mas que solo los reclamos
+        //response.sendRedirect(request.getContextPath() + "/reclamos/all");
+        
+        
+          String haciaDondeIba = request.getParameter("deDondeViene");
+          response.sendRedirect(request.getContextPath() + haciaDondeIba);      
         }
         
         else{

@@ -15,6 +15,7 @@
             <input type="text" name="user" placeholder="Nombre de usuario">
             <br>
             <input type="text" name="contrasenia" placeholder="contrasenia">
+            <input type="hidden" name="deDondeViene" value="${param.origen}">
             <input type="submit" value="Enviar Datos">
         </form>
         
