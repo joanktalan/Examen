@@ -23,8 +23,8 @@ public class PersonaDTO {
     private String usuario;
     
     private String contraseña;
+   
     
-    private String SQL;
 
     public String nomYApe() {
         return nombre+" "+apellido;
@@ -97,10 +97,14 @@ public class PersonaDTO {
     }
 
     public String getSQL() {
-        return SQL;
+        return null;
     }
 
-    
+    public String getVistaLogins() {
+        return null;
+    }
+
+   
     
     
     

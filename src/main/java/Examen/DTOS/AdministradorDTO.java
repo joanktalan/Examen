@@ -45,4 +45,10 @@ public class AdministradorDTO extends PersonaDTO {
         return SQL;
     }
     
+    @Override
+    public String getVistaLogins(){
+        String vistaLogins="WEB-INF/views/vistaLogins.jsp";
+        return vistaLogins;
+    }
+    
 }

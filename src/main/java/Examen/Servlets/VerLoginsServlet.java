@@ -41,30 +41,21 @@ public class VerLoginsServlet extends HttpServlet {
           
 
             id = Integer.parseInt(request.getParameter("id"));
-
-            boolean incorrecto=model.IdExiste(id);            
+            boolean esCorrecto=model.IdExiste(id);            
                
-            if (persona instanceof AdministradorDTO) {
-            if (incorrecto) {
+            //corregir esto...
+            if (esCorrecto) {
                 Collection<LoginDTO> logins = model.obtenerLogins(id);
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("logins", logins);
 
-                RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/vistaLogins.jsp");
-
+                RequestDispatcher vista = request.getRequestDispatcher(persona.getVistaLogins());
                 vista.forward(request, response);
-
             } else {
                 RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
                 vista.forward(request, response);
             }
-        } else {
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
-            vista.forward(request, response);
-        }
-            
-            
-            
+        
             
 
             
@@ -77,7 +68,7 @@ public class VerLoginsServlet extends HttpServlet {
             throws ServletException, IOException {
         
         if(request.getParameter("id")==null){
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page400.jsp");
             vista.forward(request, response);
         }
         else{

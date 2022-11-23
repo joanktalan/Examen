@@ -42,5 +42,11 @@ public class ContribuyenteDTO extends PersonaDTO {
         return SQL;
     }
     
+    @Override
+    public String getVistaLogins(){
+        String vistaLogins="WEB-INF/views/debesSerAdmin.jsp";
+        return vistaLogins;
+    }
+    
     
 }
