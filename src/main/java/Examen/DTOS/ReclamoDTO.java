@@ -43,18 +43,13 @@ public class ReclamoDTO {
         return inmueble;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    @Override
-    public String toString() {
-        return "" +fechaSeCreo + " " + categoria + " "+ inmueble;
-    }
-
-    public int getId() {
-        return id;
-    }
+//    public int getIdUsuario() {
+//        return idUsuario;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
 
     
     

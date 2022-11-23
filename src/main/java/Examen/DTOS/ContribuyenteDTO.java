@@ -9,33 +9,6 @@ public class ContribuyenteDTO extends PersonaDTO {
     }
     
     
-    
-    public void generarReclamo() {
-    }
-    
-     @Override
-    public void verReclamos(Collection<ReclamoDTO> reclamos){
-        System.out.println("*** RECLAMOS ***");
-        System.out.println("FECHA DE CREACION " + " CATEGORIA " + " DOMICILIO ");
-        for (ReclamoDTO re : reclamos) {
-            if(re.getIdUsuario()==getId())
-            System.out.println(re.getFechaSeCreo() + " " + re.getCategoria() + " " + re.getInmueble());
-        }
-    }
-    
-    @Override
-    public Collection<ReclamoDTO> darReclamos(Collection<ReclamoDTO> reclamos)
-    {
-        Collection<ReclamoDTO> reclamosFiltrados = null;
-        
-        for (ReclamoDTO re : reclamos) 
-             {
-                if(re.getIdUsuario()==getId())
-                reclamosFiltrados.add(re);
-             }
-      return reclamosFiltrados;
-    }
-    
     @Override
     public String getSQL() {
         String SQL="SELECT * FROM reclamos where personaid1="+getId();
@@ -48,5 +21,13 @@ public class ContribuyenteDTO extends PersonaDTO {
         return vistaLogins;
     }
     
+    
+    
+    
+    
+    
+    //WORK IN PROGRESS
+    public void generarReclamo() {
+    }
     
 }

@@ -46,38 +46,29 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //el usuario ingresa un nombre, ese nombre es buscado en la base de datos y si coincide se devuelve el usuario
-        
+
         Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOMySQL());
-        
-        String usuario=request.getParameter("user");
-        
-        String contrasenia=request.getParameter("contrasenia");
-        
+
+        String usuario = request.getParameter("user");
+
+        String contrasenia = request.getParameter("contrasenia");
+
         PersonaDTO persona = model.obtenerPersona(usuario, contrasenia);
-        
-        if(persona!=null){
-            
-            
-        
-        //cargando el login
-        LoginDTO login = new LoginDTO(persona.getId(),LocalDate.now(),LocalTime.now());
-        model.cargarLogin(login);
-        
-        //Guardandando y seteando los datos y configuracion del usuario
-        HttpSession session = request.getSession();
-        session.setMaxInactiveInterval(20);
-        request.getSession().setAttribute("usuario", persona);
-        
-        //esto lo voy a tener que cambiar cuando ponga lo del filtro ya que el login sirve ahora para mas que solo los reclamos
-        //response.sendRedirect(request.getContextPath() + "/reclamos/all");
-        
-        
-          String haciaDondeIba = request.getParameter("deDondeViene");
-          response.sendRedirect(request.getContextPath() + haciaDondeIba);      
-        }
-        
-        else{
+
+        if (persona != null) {
+
+            //cargando el login
+            LoginDTO login = new LoginDTO(persona.getId(), LocalDate.now(), LocalTime.now());
+            model.cargarLogin(login);
+
+            //Guardandando y seteando los datos y configuracion del usuario
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(20);
+            request.getSession().setAttribute("usuario", persona);
+
+            String haciaDondeIba = request.getParameter("deDondeViene");
+            response.sendRedirect(request.getContextPath() + haciaDondeIba);
+        } else {
             RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page401.jsp");
             vista.forward(request, response);
         }

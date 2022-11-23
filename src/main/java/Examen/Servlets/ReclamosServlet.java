@@ -61,8 +61,6 @@ public class ReclamosServlet extends HttpServlet {
         
         Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
        
-        //me da curiosidad, en realidad lo que tengo que hacer es meterle un setSession al usuario, mas facil en general...
-       
         
         PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
         Collection<ReclamoDTO> reclamos = model.obtenerReclamos(persona);
@@ -74,10 +72,8 @@ public class ReclamosServlet extends HttpServlet {
         
         //Vísta de la Pagina
         RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/vistas/vistaReclamos.jsp");
-        
         vista.forward(request, response);
-         
-//request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
+
     }
 
     /**

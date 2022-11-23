@@ -24,19 +24,9 @@ public class PersonaDTO {
     
     private String contraseña;
    
-    
-
-    public String nomYApe() {
-        return nombre+" "+apellido;
-    }
 
     
-    public void verReclamos(Collection<ReclamoDTO> reclamos){System.out.println("implementacion original");}
-    
-    public Collection<ReclamoDTO> darReclamos(Collection<ReclamoDTO> reclamos){
-        System.out.println("implementacion original");
-     return reclamos;   
-    }
+   
 
     public PersonaDTO(int id, String dni, String nombre, String apellido, String mail, String telefonoMovil, String usuario, String contraseña, int idReclamo) {
         this.id = id;
@@ -80,21 +70,6 @@ public class PersonaDTO {
         return id;
     }
 
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public String getTelefonoMovil() {
-        return telefonoMovil;
-    }
 
     public String getSQL() {
         return null;
@@ -108,6 +83,20 @@ public class PersonaDTO {
     
     
     
-    
+    //    public String getContraseña() {
+//        return contraseña;
+//    }
+//
+//    public String getDni() {
+//        return dni;
+//    }
+//
+//    public String getMail() {
+//        return mail;
+//    }
+//
+//    public String getTelefonoMovil() {
+//        return telefonoMovil;
+//    }
     
 }

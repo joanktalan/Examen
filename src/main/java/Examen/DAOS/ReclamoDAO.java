@@ -6,9 +6,6 @@ package Examen.DAOS;
 
 import Examen.DTOS.PersonaDTO;
 import Examen.DTOS.ReclamoDTO;
-import Examen.Otros.Categoria;
-import Examen.Otros.Domicilio;
-import java.sql.Date;
 import java.util.Collection;
 
 /**
@@ -16,7 +13,9 @@ import java.util.Collection;
  * @author Joancito
  */
 public interface ReclamoDAO {
-     public Collection<ReclamoDTO> obtenerReclamos();
-     public ReclamoDTO obtenerReclamo(int id);
-     public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona);
+      public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona);
 }
+
+
+//CODIGO EXTRA//
+//public Collection<ReclamoDTO> obtenerReclamos();

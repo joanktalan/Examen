@@ -19,7 +19,6 @@ public class LoginDTO {
     LocalDate date;
     LocalTime time;
     
-    
 
     public LoginDTO(int id, LocalDate date, LocalTime time) {
         this.id = id;

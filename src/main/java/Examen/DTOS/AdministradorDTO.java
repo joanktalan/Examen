@@ -8,9 +8,22 @@ public class AdministradorDTO extends PersonaDTO {
         super(id, dni, nombre, apellido, mail, telefonoMovil, usuario, contrasenia);
     }
     
+    @Override
+    public String getSQL() {
+        String SQL="SELECT * FROM reclamos";
+        return SQL;
+    }
     
-
-    public void darAlta() {
+    @Override
+    public String getVistaLogins(){
+        String vistaLogins="WEB-INF/views/vistaLogins.jsp";
+        return vistaLogins;
+    }
+    
+    
+    
+    //WORK IN PROGRESS
+     public void darAlta() {
     }
 
     public void darBaja() {
@@ -25,30 +38,6 @@ public class AdministradorDTO extends PersonaDTO {
     public void resuelto() {
     }
     
-    @Override
-    public void verReclamos(Collection<ReclamoDTO> reclamos){
-             System.out.println("*** RECLAMOS ***");
-        System.out.println("FECHA DE CREACION " + " CATEGORIA " + " DOMICILIO ");
-        for (ReclamoDTO re : reclamos) {
-            System.out.println(re.getFechaSeCreo() + " " + re.getCategoria() + " " + re.getInmueble());
-        }
-    }
     
-    @Override
-    public Collection<ReclamoDTO> darReclamos(Collection<ReclamoDTO> reclamos){
-     return reclamos;   
-    }
-    
-    @Override
-    public String getSQL() {
-        String SQL="SELECT * FROM reclamos";
-        return SQL;
-    }
-    
-    @Override
-    public String getVistaLogins(){
-        String vistaLogins="WEB-INF/views/vistaLogins.jsp";
-        return vistaLogins;
-    }
     
 }
