@@ -19,6 +19,7 @@ import java.time.LocalTime;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
-public class Reclamos extends HttpServlet {
+@WebServlet(name = "ReclamosServlet", urlPatterns = {"/reclamos/all"})
+public class ReclamosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

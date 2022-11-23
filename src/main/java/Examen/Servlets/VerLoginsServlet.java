@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Joancito
  */
-public class LoginsServlet extends HttpServlet {
+@WebServlet(name = "VerLoginsServlet", urlPatterns = {"/verLogins"})
+public class VerLoginsServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

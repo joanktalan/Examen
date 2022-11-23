@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
-public class ServletParaLogin extends HttpServlet {
+@WebServlet(name = "LoginServlet", urlPatterns = {"parcial2"})
+public class LoginServlet extends HttpServlet {
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
