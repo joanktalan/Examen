@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 
             //cargando el login
             LoginDTO login = new LoginDTO(persona.getId(), LocalDate.now(), LocalTime.now());
-            model.cargarLogin(login);                     
+            //model.cargarLogin(login);                     <------- Esta desactivado por ahora ese metodo
 
             //Guardandando y seteando los datos y configuracion del usuario
             HttpSession session = request.getSession();
@@ -71,6 +71,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page401.jsp");
             vista.forward(request, response);
+
         }
     }
 
