@@ -12,7 +12,6 @@
     <body>
         
         <h1 style='text-align:center'>${nombre} ${apellido}</h1>
-        <p><a class="btn btn-warning btn-lg" href="${pageContext.request.contextPath}/parcial2">volver</a></p>
          
         <p style='text-align:center'>Fecha de creacion-- Categoria --Domicilio</p>
         

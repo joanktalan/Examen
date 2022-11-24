@@ -71,7 +71,7 @@ public class ReclamosServlet extends HttpServlet {
         request.setAttribute("reclamos",reclamos);
         
         //Vísta de la Pagina
-        RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/vistas/vistaReclamos.jsp");
+        RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/views/vistaReclamos.jsp");
         vista.forward(request, response);
 
     }

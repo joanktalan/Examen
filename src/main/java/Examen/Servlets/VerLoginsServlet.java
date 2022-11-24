@@ -30,36 +30,30 @@ public class VerLoginsServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            int id;
-            //PersonaDTO persona=null;
 
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOMySQL());
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
-            
-           //ID INCORRECTO X
-          
+        int id;
+        //PersonaDTO persona=null;
 
-            id = Integer.parseInt(request.getParameter("id"));
-            boolean esCorrecto=model.IdExiste(id);            
-               
-            //corregir esto...
-            if (esCorrecto) {
-                Collection<LoginDTO> logins = model.obtenerLogins(id);
-                request.setAttribute("id", request.getParameter("id"));
-                request.setAttribute("logins", logins);
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new LoginDAOMySQL());
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
 
-                RequestDispatcher vista = request.getRequestDispatcher(persona.getVistaLogins());
-                vista.forward(request, response);
-            } else {
-                RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/vistas/page400.jsp");
-                vista.forward(request, response);
-            }
-        
-            
+        //ID INCORRECTO X
+        id = Integer.parseInt(request.getParameter("id"));
+        boolean esCorrecto = model.IdExiste(id);
 
-            
-                   
+        //corregir esto...
+        if (esCorrecto) {
+            Collection<LoginDTO> logins = model.obtenerLogins(id);
+            request.setAttribute("id", request.getParameter("id"));
+            request.setAttribute("logins", logins);
+
+            RequestDispatcher vista = request.getRequestDispatcher(persona.getVistaLogins());
+            vista.forward(request, response);
+        } else {
+            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page400.jsp");
+            vista.forward(request, response);
+        }
+
     }
 
     
@@ -67,8 +61,10 @@ public class VerLoginsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
+        
         if(request.getParameter("id")==null){
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page400.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher(persona.getPrimerVista());
             vista.forward(request, response);
         }
         else{

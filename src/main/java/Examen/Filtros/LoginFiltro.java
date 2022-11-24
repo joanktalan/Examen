@@ -39,7 +39,7 @@ public class LoginFiltro implements Filter {
         System.out.println();
 
         if (session != null && session.getAttribute("usuario") != null) {
-
+             
             chain.doFilter(request, response); // Ir al siguiente en la cadena de filters
             //en caso de que no haya uno va directo a una de esas paginas....
 

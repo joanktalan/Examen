@@ -79,7 +79,9 @@ public class PersonaDTO {
         return null;
     }
 
-   
+    public String getPrimerVista() {
+        return "WEB-INF/views/page400.jsp";
+    }
     
     
     

@@ -17,12 +17,14 @@ public class ContribuyenteDTO extends PersonaDTO {
     
     @Override
     public String getVistaLogins(){
-        String vistaLogins="WEB-INF/views/debesSerAdmin.jsp";
+        String vistaLogins="WEB-INF/views/page401.jsp";
         return vistaLogins;
     }
     
-    
-    
+     @Override
+    public String getPrimerVista(){
+        return "WEB-INF/views/page401.jsp";
+    }
     
     
     
