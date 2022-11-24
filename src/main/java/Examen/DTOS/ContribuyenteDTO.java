@@ -15,19 +15,6 @@ public class ContribuyenteDTO extends PersonaDTO {
         return SQL;
     }
     
-    @Override
-    public String getVistaLogins(){
-        String vistaLogins="WEB-INF/views/page401.jsp";
-        return vistaLogins;
-    }
-    
-     @Override
-    public String getPrimerVista(){
-        return "WEB-INF/views/page401.jsp";
-    }
-    
-    
-    
     //WORK IN PROGRESS
     public void generarReclamo() {
     }

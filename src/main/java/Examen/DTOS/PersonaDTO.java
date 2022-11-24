@@ -75,14 +75,7 @@ public class PersonaDTO {
         return null;
     }
 
-    public String getVistaLogins() {
-        return null;
-    }
 
-    public String getPrimerVista() {
-        return "WEB-INF/views/page400.jsp";
-    }
-    
     
     
     //    public String getContraseña() {
