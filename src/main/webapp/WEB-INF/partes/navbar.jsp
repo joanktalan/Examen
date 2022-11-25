@@ -4,12 +4,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     
     
     <body>  
-            <ul class="navbar-nav">
+        <div class="navbar"">
+            <ul>
                 
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
@@ -20,15 +21,14 @@
                 </li>
                   
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="${pageContext.request.contextPath}/verLogins">ver Logins</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/verLogins">Ver Logins</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="${pageContext.request.contextPath}/reclamos/all">Ver Reclamos</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/reclamos/all">Ver Reclamos</a>
                 </li>
-                
             </ul>
-        
+        </div>
     </body>
      
 </html>

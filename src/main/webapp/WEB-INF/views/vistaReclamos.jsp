@@ -7,20 +7,23 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     
     <body>
         
-        <h1 style='text-align:center'>${nombre} ${apellido}</h1>
+        <h1 id="NombreYApe">${nombre} ${apellido}</h1>
          
-        <p style='text-align:center'>Fecha de creacion-- Categoria --Domicilio</p>
+        <h2 id="TituloReclamos">Viendo Reclamos</h2>
+    
+        <p id="tipoDatoReclamo">Fecha de creacion Categoria Domicilio</p>
         
-        <ul>
+        <ol>
             <c:forEach items="${reclamos}" var="reclamo">
-                <li style='text-align:center'>"${reclamo.fechaSeCreo}"  "${reclamo.categoria}"  "${reclamo.inmueble}"</li>
+                <li id="reclamoIndividual">"${reclamo.fechaSeCreo}"  "${reclamo.categoria}"  "${reclamo.inmueble}"</li>
             </c:forEach>
                 
-        </ul>
+        </ol>
         
     </body>
 </html>

@@ -6,17 +6,24 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         
-        <h1>Ingrese usuario y contraseña</h1>
+        <h1 id="TituloLogin">Ingrese usuario y contraseña</h1>
         
         <form action="/parcial2" method="post">
-            <input type="text" name="user" placeholder="Nombre de usuario">
+            <div id="formulario">
+                <div class="formDat"><input  type="text" id="nombreUsuario" name="user" placeholder="Nombre de usuario" ></div>
+                <div class="formDat"><input type="password" id="contrasenia" name="contrasenia" placeholder="contrasenia" ></div>
+                <input type="hidden" name="deDondeViene" value="${param.origen}">
+                <div class="button"><input type="submit" id="submit" value="Enviar Datos" ></div>
+            </div>
+                
             <br>
-            <input type="text" name="contrasenia" placeholder="contrasenia">
-            <input type="hidden" name="deDondeViene" value="${param.origen}">
-            <input type="submit" value="Enviar Datos">
+            
+            
+            
         </form>
         
         <br>

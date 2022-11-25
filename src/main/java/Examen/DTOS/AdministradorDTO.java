@@ -14,7 +14,15 @@ public class AdministradorDTO extends PersonaDTO {
         return SQL;
     }
     
-   
+    @Override
+     public String getUrlDoGet(){
+        return "WEB-INF/views/page400.jsp";
+    }
+    
+     @Override
+    public String getUrlVerLogins(){
+        return "WEB-INF/views/vistaLogins.jsp";
+    }
     
     
     //WORK IN PROGRESS

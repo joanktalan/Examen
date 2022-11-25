@@ -47,7 +47,7 @@ public class VerLoginsServlet extends HttpServlet {
             request.setAttribute("id", request.getParameter("id"));
             request.setAttribute("logins", logins);
 
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/vistaLogins.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlVerLogins"));
             vista.forward(request, response);
         } else {
             RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page400.jsp");
@@ -64,7 +64,7 @@ public class VerLoginsServlet extends HttpServlet {
         PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
         
         if(request.getParameter("id")==null){
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page400.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlDoGet"));
             vista.forward(request, response);
         }
         else{

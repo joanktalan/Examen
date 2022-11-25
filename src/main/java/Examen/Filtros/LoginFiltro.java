@@ -42,10 +42,15 @@ public class LoginFiltro implements Filter {
         System.out.println();
 
         if (session != null && session.getAttribute("usuario") != null) {
-            if(httpRequest.getServletPath().contentEquals("/verLogins") && (PersonaDTO) session.getAttribute("usuario") instanceof ContribuyenteDTO){
+            if(httpRequest.getServletPath().contentEquals("/verLogins")){
                 
-                RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/views/page401.jsp");
-                vista.forward(request, response);
+                PersonaDTO persona = (PersonaDTO) session.getAttribute("usuario"); 
+                
+                String urlDoGet = persona.getUrlDoGet();
+                String urlVerLogins = persona.getUrlVerLogins();
+                
+                session.setAttribute("urlDoGet", urlDoGet);
+                session.setAttribute("urlVerLogins", urlVerLogins);
             }
             chain.doFilter(request, response); // Ir al siguiente en la cadena de filters
             //en caso de que no haya uno va directo a una de esas paginas....

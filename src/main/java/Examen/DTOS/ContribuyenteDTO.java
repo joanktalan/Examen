@@ -15,6 +15,18 @@ public class ContribuyenteDTO extends PersonaDTO {
         return SQL;
     }
     
+    @Override
+     public String getUrlDoGet(){
+        return "WEB-INF/views/page401.jsp";
+    }
+    
+     @Override
+    public String getUrlVerLogins(){
+        return "WEB-INF/views/page401.jsp";
+    }
+    
+    
+    
     //WORK IN PROGRESS
     public void generarReclamo() {
     }

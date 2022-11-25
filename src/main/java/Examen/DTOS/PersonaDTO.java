@@ -75,7 +75,13 @@ public class PersonaDTO {
         return null;
     }
 
-
+    public String getUrlDoGet(){
+        return "";
+    }
+    
+    public String getUrlVerLogins(){
+        return "";
+    }
     
     
     //    public String getContraseña() {

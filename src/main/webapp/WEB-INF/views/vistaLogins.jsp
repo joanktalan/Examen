@@ -7,20 +7,21 @@
     <head>
         <title>Logins</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     
     <body>
         
         
-        <h1 style='text-align:center'>Logins del id: ${id}</h1>
-        <p style='text-align:center'>Fecha------Hora</p>
+        <h1 id="TituloLogins">Logins del id: ${id}</h1>
+        <p id="TipoDatoLogin">Fecha <span style="margin: 0px 60px">Hora</span></p>
         
-        <ul>
+        <ol>
             <c:forEach items="${logins}" var="login">
-                <li style='text-align:center'> "${login.date}" "${login.time}" </li>
+                <li id="loginIndividual"> "${login.date}" "${login.time}" </li>
             </c:forEach>
                 
-        </ul>
+        </ol>
         
     </body>
 </html>

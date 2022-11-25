@@ -6,4 +6,120 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Nov 22, 2022, 4:20:22 PM
     Author     : Joancito
 */
+#TituloLogin{
+    margin:0px 0px 0px 500px;
+    width: 400px;
+    color: white;
+    font-family: lato;
+    
+}
+
+
+body {
+  width:100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(/img/fondo.jpg);
+  background-size:cover;
+  background-position:center;
+}
+
+.nav-item{
+    padding: 10px 10px 20px 20px;
+    color:white;
+    font-family: arial;
+   
+}
+
+
+
+.navbar{
+width:85%;
+margin:auto;
+padding:35px 0;
+display: flex;
+align-items:center;
+justify-content:space-between;
+  }
+
+.navbar ul li{
+  list-style:none;
+  display:inline-block;
+  margin: 0 20px;
+}
+
+.navbar ul li a{
+  text-decoration:none;
+  color: #fff;
+  text-transform:uppercase;
+  
+}
+
+#NombreYApe{
+    
+}
+
+#TituloReclamos{
+    
+}
+
+#tipoDatoReclamo{
+    
+}
+
+#reclamoIndividual{
+    
+}
+
+#TituloLogins{
+   margin: 10px 565px  0px;
+    color:white;
+}
+
+#TipoDatoLogin{
+    margin:10px 570px  0px;
+    color:white;
+  
+  
+}
+
+#loginIndividual{
+    width:85%;
+    margin:10px 530px  0px;
+    padding:10px;
+    width:200px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:space-between;
+    font-family: arial;
+    background:rgb(84 170 40 / 56%);
+  
+}
+#formulario{
+  
+  padding:0% 40%;
+  
+}
+.formDat{
+    margin:10px;
+}
+.formDat input{
+    padding:10px;
+    width:300px;
+    border-radius: 10px 5%;
+  background-color: #000;
+  color:white;
+}
+.formDat input::placeholder{
+    color:white
+}
+.button{
+  margin:20px 70px 10px 70px;
+}
+.button input{
+    padding:10px;
+    width:200px;
+    border-radius: 5% 10px;
+    box-sizing: border-box;
+}
 
