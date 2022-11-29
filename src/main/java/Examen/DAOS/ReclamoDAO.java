@@ -14,6 +14,7 @@ import java.util.Collection;
  */
 public interface ReclamoDAO {
       public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona);
+      public void agregarReclamo(ReclamoDTO reclamo);
 }
 
 

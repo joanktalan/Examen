@@ -16,7 +16,7 @@ public class AdministradorDTO extends PersonaDTO {
     
     @Override
      public String getUrlDoGet(){
-        return "WEB-INF/views/page400.jsp";
+        return "WEB-INF/pages/ingreseId.jsp";
     }
     
      @Override

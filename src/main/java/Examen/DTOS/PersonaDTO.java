@@ -4,7 +4,7 @@ package Examen.DTOS;
 import java.util.Collection;
 import java.util.List;
 
-public class PersonaDTO {
+public abstract class PersonaDTO {
 
     private int id;
     
@@ -71,17 +71,14 @@ public class PersonaDTO {
     }
 
 
-    public String getSQL() {
-        return null;
-    }
+    public abstract String getSQL();
+        
 
-    public String getUrlDoGet(){
-        return "";
-    }
+    public abstract String getUrlDoGet();
     
-    public String getUrlVerLogins(){
-        return "";
-    }
+    
+    public abstract String getUrlVerLogins();
+       
     
     
     //    public String getContraseña() {

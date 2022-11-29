@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author alumno
  */
 @WebServlet(name = "ReclamosServlet", urlPatterns = {"/reclamos/all"})
-public class ReclamosServlet extends HttpServlet {
+public class VerReclamosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

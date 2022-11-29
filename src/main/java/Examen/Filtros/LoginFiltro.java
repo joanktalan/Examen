@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Joancito
  */
-@WebFilter(filterName = "LoginFiltro", urlPatterns = {"/reclamos/all", "/verLogins"})
+@WebFilter(filterName = "LoginFiltro", urlPatterns = {"/reclamos/all", "/verLogins", "/reclamos/add"})
 public class LoginFiltro implements Filter {
     
     private static final boolean debug = true;
