@@ -47,7 +47,14 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
 
                 int id = rs.getInt(1);
                 LocalDate fechaSeCreo = rs.getDate(2).toLocalDate();
-                LocalDate fechaSeResolvio = rs.getDate(3).toLocalDate();
+                
+                LocalDate fechaSeResolvio = null;
+                
+                if(rs.getDate(3)!=null){
+                    fechaSeResolvio = rs.getDate(3).toLocalDate();
+                }
+                
+               
                 Categoria categoria = Categoria.valueOf(rs.getString(4).toUpperCase());
 
                 String calle = rs.getString(5);
@@ -66,6 +73,30 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
         }
         return reclamos;
 
+    }
+
+    @Override
+    public void agregarReclamo(ReclamoDTO reclamo) {
+        
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            
+            
+//            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
+//                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`descripcion`,`personaid1`)"
+//                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
+//                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getDescripcion() + "', '" + reclamo.getIdUsuario() + "')");
+
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
+                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`personaid1`)"
+                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
+                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getIdUsuario() + "')");
+    
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al obtener reclamo", ex);
+        }
     }
 }
     

@@ -27,6 +27,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/reclamos/all">Ver Reclamos</a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/reclamos/add">Añadir Reclamo</a>
+                </li>
+                
             </ul>
         </div>
     </body>

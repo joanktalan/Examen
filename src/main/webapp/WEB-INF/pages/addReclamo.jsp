@@ -9,17 +9,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="/css/styles.css">
         <title>Reclamos</title>
     </head>
     <body>
         
-        <h1>Añada las caracteristicas de su reclamo</h1>
-        <h2>ID: SE LLENA AUTOMATICAMENTE</h2>
-        <h2>FECHA QUE SE CREO: automaticamente</h2>
-        <h2>FECHA QUE SE RESOLVIÓ:automaticamente </h2>
-        <h2>CATEGORIA: COSO QUE SE EXTIENDE CON LOS ENUMS</h2>
-        <h2>DOMICILIO: SE LLENA POR ESCRITO</h2>
-        <h2>DESCRIPCION: SE LLENA POR ESCRITO (EXTRA)</h2>
+        <form action="/reclamos/add" method="post">
+            <div id="formulario">
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ALUMBRADO">
+                <label for="categoria">ALUMBRADO</label><br>
+                </div>
+                
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ARBOLADO">
+                <label for="categoria">ARBOLADO</label><br>
+                </div>
+                
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="LIMPIEZA">
+                <label for="categoria">LIMPIEZA</label><br>
+                </div>
+                
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="PLUVIAL">
+                <label for="categoria">PLUVIAL</label><br>
+                </div>
+                
+                <div class="formDatReclamo"><input type="text" id="calle" name="calle" placeholder="Calle" ></div>
+                <div class="formDatReclamo"><input type="text" id="altura" name="altura" placeholder="Altura" ></div>
+                
+                <div class="button"><input type="submit" id="submit" value="Generar Reclamos" ></div>
+                
+            </div>
+                
+            <br>
+            
+            
+            
+        </form>
+        
+        
+        
         
     </body>
 </html>

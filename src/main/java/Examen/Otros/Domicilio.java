@@ -16,5 +16,17 @@ public class Domicilio {
         return calle + " " + altura;
     }
 
+    public String getCalle() {
+        return calle;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    
+    
+    
+    
     
 }

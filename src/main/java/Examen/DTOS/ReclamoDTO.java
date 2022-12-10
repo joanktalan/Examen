@@ -30,6 +30,21 @@ public class ReclamoDTO {
         this.descripcion = descripcion;
         this.idUsuario=idUsuario;
     }
+    
+     public ReclamoDTO(LocalDate fechaSeCreo, Categoria categoria, Domicilio inmueble, String descripcion,int idUsuario) {
+        this.fechaSeCreo = fechaSeCreo;
+        this.categoria = categoria;
+        this.inmueble = inmueble;
+        this.descripcion = descripcion;
+        this.idUsuario=idUsuario;
+    }
+     
+     public ReclamoDTO(LocalDate fechaSeCreo, Categoria categoria, Domicilio inmueble,int idUsuario) {
+        this.fechaSeCreo = fechaSeCreo;
+        this.categoria = categoria;
+        this.inmueble = inmueble;
+        this.idUsuario=idUsuario;
+    }
 
     public LocalDate getFechaSeCreo() {
         return fechaSeCreo;
@@ -43,9 +58,16 @@ public class ReclamoDTO {
         return inmueble;
     }
 
-//    public int getIdUsuario() {
-//        return idUsuario;
-//    }
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+    
+    
 //
 //    public int getId() {
 //        return id;

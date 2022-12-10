@@ -18,6 +18,8 @@ public interface PersonaDAO {
     
     public PersonaDTO obtenerPersona(String usuarioAfuera, String contraseniaAfuera);
     public boolean IdExiste(int id);
+    public void registrarUsuario(PersonaDTO usuarioNuevo);
+    
     
 }
 

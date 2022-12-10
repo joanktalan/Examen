@@ -81,6 +81,25 @@ public class PersonaDAOMySQL implements PersonaDAO {
         return existe;
     }
 
+    @Override
+    public void registrarUsuario(PersonaDTO usuario) {
+try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+//MODIFICAR LO QUE SERIA UN USUARIO NUEVO CAMBIANDO TODO LO DEL QUERY
+//DESPUES HACER PROCESO TAMBIEN EN UN SERVLET
+            
+            
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
+                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`personaid1`)"
+                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
+                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getIdUsuario() + "')");
+    
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al obtener reclamo", ex);
+        }    }
+
 }
 
 

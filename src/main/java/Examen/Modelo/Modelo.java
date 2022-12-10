@@ -48,10 +48,18 @@ public class Modelo {
         this.loginDAO = loginDAO;
     }
 
+    public Modelo(ReclamoDAO reclamoDAO) {
+        this.reclamoDAO = reclamoDAO;
+    }
+
     //RECLAMOS
 
     public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona) {
         return reclamoDAO.obtenerReclamos(persona);
+    }
+    
+    public void añadirReclamo(ReclamoDTO reclamo){
+        reclamoDAO.agregarReclamo(reclamo);
     }
     
     //PERSONAS
@@ -61,6 +69,10 @@ public class Modelo {
 
     public boolean IdExiste(int id) {
         return personaDAO.IdExiste(id);
+    }
+    
+    public void registrarUsuario(PersonaDTO usuarioNuevo){
+       personaDAO.registrarUsuario(usuarioNuevo);
     }
 
     //LOGINS

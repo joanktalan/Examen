@@ -4,8 +4,19 @@
  */
 package Examen.Servlets;
 
+import Examen.DAOS.IMPL.PersonaDAOMySQL;
+import Examen.DAOS.IMPL.ReclamoDAOMySQL;
+import Examen.DTOS.LoginDTO;
+import Examen.DTOS.PersonaDTO;
+import Examen.DTOS.ReclamoDTO;
+import Examen.Modelo.Modelo;
+import Examen.Otros.Categoria;
+import Examen.Otros.Domicilio;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +57,7 @@ public class AddReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            RequestDispatcher vista = request.getRequestDispatcher("WEB-INF/pages/addReclamo");
+            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/addReclamo.jsp");
             vista.forward(request, response);
     }
 
@@ -61,6 +72,31 @@ public class AddReclamoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Modelo model = new Modelo(new PersonaDAOMySQL(),new ReclamoDAOMySQL());
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
+        
+        
+        //Cargando el reclamo
+        LocalDate fechaCreacion = LocalDate.now();
+        
+         //Veo si es obligatorio es tuUpperCase
+        
+        String catego = request.getParameter("categoria");
+        System.out.println("------>>>>>>>" + catego);
+        Categoria categoria = Categoria.valueOf(catego.toUpperCase().trim());
+        
+        String calle = (String) request.getParameter("calle");
+        int altura = Integer.parseInt(request.getParameter("altura"));
+        Domicilio domicilio = new Domicilio(calle,altura);
+        
+        //String descripcion = (String) request.getParameter("descripcion");
+        
+        int id = persona.getId();
+        
+        //Se añade el reclamo
+        ReclamoDTO reclamo = new ReclamoDTO(fechaCreacion,categoria,domicilio,id);
+        model.añadirReclamo(reclamo);
         
     }
 

@@ -58,8 +58,8 @@ public class LoginServlet extends HttpServlet {
         if (persona != null) {
 
             //cargando el login
-            LoginDTO login = new LoginDTO(persona.getId(), LocalDate.now(), LocalTime.now());
-            model.cargarLogin(login);                    
+////////            LoginDTO login = new LoginDTO(persona.getId(), LocalDate.now(), LocalTime.now());
+////////            model.cargarLogin(login);                    
 
             //Guardandando y seteando los datos y configuracion del usuario
             HttpSession session = request.getSession();
