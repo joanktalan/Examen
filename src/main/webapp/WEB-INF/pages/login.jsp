@@ -14,8 +14,8 @@
         
         <form action="/parcial2" method="post">
             <div id="formulario">
-                <div class="formDat"><input  type="text" id="nombreUsuario" name="user" placeholder="Nombre de usuario" ></div>
-                <div class="formDat"><input type="password" id="contrasenia" name="contrasenia" placeholder="contrasenia" ></div>
+                <div class="formDat"><input  type="text" id="nombreUsuario" name="user" placeholder="Nombre de usuario" required></div>
+                <div class="formDat"><input type="password" id="contrasenia" name="contrasenia" placeholder="contrasenia" required ></div>
                 <input type="hidden" name="deDondeViene" value="${param.origen}">
                 <div class="button"><input type="submit" id="submit" value="Enviar Datos" ></div>
             </div>
@@ -28,6 +28,8 @@
         
         <br>
        
+        <p>Desea usted registrarse? </p>
+        <a class="nav-link" href="${pageContext.request.contextPath}/registrarse">Registrarse</a>
        
     </body>
 </html>

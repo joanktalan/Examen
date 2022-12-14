@@ -52,14 +52,28 @@ public class Modelo {
         this.reclamoDAO = reclamoDAO;
     }
 
+    public Modelo(PersonaDAO personaDAO) {
+        this.personaDAO = personaDAO;
+    }
+    
+    
+
     //RECLAMOS
 
     public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona) {
         return reclamoDAO.obtenerReclamos(persona);
     }
     
+    public ArrayList<ReclamoDTO> obtenerReclamosArray(PersonaDTO persona) {
+        return reclamoDAO.obtenerReclamosArray(persona);
+    }
+    
     public void añadirReclamo(ReclamoDTO reclamo){
         reclamoDAO.agregarReclamo(reclamo);
+    }
+    
+    public void borrarReclamo(int numReclamo){
+        reclamoDAO.borrarReclamo(numReclamo);
     }
     
     //PERSONAS
@@ -71,8 +85,20 @@ public class Modelo {
         return personaDAO.IdExiste(id);
     }
     
-    public void registrarUsuario(PersonaDTO usuarioNuevo){
-       personaDAO.registrarUsuario(usuarioNuevo);
+    public void añadirUsuario(PersonaDTO usuarioNuevo){
+       personaDAO.añadirUsuario(usuarioNuevo);
+    }
+    
+    public String parametrosCorrectos(String nombreUsuario, String dni, String mail, String telefono){
+        return personaDAO.parametrosCorrectos(nombreUsuario, dni, mail, telefono);
+    }
+    
+    public boolean usuarioExiste(String usuario){
+        return personaDAO.usuarioExiste(usuario);
+    }
+    
+    public boolean telefonoExiste(String telefono){
+        return personaDAO.telefonoExiste(telefono);
     }
 
     //LOGINS
@@ -83,6 +109,8 @@ public class Modelo {
     public void cargarLogin(LoginDTO login) {
         loginDAO.cargarLogin(login);
     }
+    
+    
 
    
 }
@@ -107,9 +135,7 @@ public class Modelo {
 //    public Collection<PersonaDTO> obtenerPersonas(){
 //        return personaDAO.obtenerPersonas();
 //    }
-    //    public boolean usuarioExiste(String usuario){
-//        return personaDAO.usuarioExiste(usuario);
-//    }
+        
 //
 //    public boolean contraseñaExiste(String contrasenia,String usuario) {
 //        return personaDAO.contraseñaExiste(contrasenia,usuario);

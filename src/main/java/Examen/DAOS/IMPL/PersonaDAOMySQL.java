@@ -82,23 +82,140 @@ public class PersonaDAOMySQL implements PersonaDAO {
     }
 
     @Override
-    public void registrarUsuario(PersonaDTO usuario) {
-try {
+    public void añadirUsuario(PersonaDTO usuario) {
+        try {
             Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
-//MODIFICAR LO QUE SERIA UN USUARIO NUEVO CAMBIANDO TODO LO DEL QUERY
-//DESPUES HACER PROCESO TAMBIEN EN UN SERVLET
-            
-            
-            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
-                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`personaid1`)"
-                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
-                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getIdUsuario() + "')");
-    
+
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`personas"
+                    + "` (`dni`, `nombre`, `apellido`,`mail`,`telefonoMovil`,`nombre_usuario`,`contrasenia`)"
+                    + " VALUES ('" + usuario.getDni() + "', '" + usuario.getNombre() + "', '" + usuario.getApellido() + "'"
+                    + ", '" + usuario.getMail() + "', '" + usuario.getTelefonoMovil() + "', '" + usuario.getUsuario() + "', '" + usuario.getContraseña() + "')");
+
             ps.executeUpdate();
 
         } catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener reclamo", ex);
-        }    }
+            throw new RuntimeException("Error al añadir usuario", ex);
+        }
+    }
+    
+    
+    @Override
+    public boolean usuarioExiste(String usuario) {
+        boolean existe = false;
+
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM personas where nombre_usuario='" + usuario + "'");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (usuario.equals(rs.getString(7))) {
+                    existe = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al verificar usuario", ex);
+
+        }
+
+        return existe;
+    }
+    
+    @Override
+    public boolean mailExiste(String mail) {
+        boolean existe = false;
+
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM personas where mail='" + mail + "'");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (mail.equals(rs.getString(5))) {
+                    existe = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al verificar usuario", ex);
+
+        }
+
+        return existe;
+    }
+    
+    @Override
+    public boolean dniExiste(String dni) {
+        boolean existe = false;
+
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM personas where dni='" + dni + "'");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (dni.equals(rs.getString(2))) {
+                    existe = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al verificar usuario", ex);
+
+        }
+            
+        return existe;
+    }
+
+    @Override
+    public String parametrosCorrectos(String nombreUsuario, String dni, String mail, String telefono) {
+        String msg = "ok";
+        
+        if(telefonoExiste(telefono)){
+            msg = "Telefono ya existe";
+        }
+        
+        if (dniExiste(dni)) {
+            msg = "DNI ya existe";
+        }
+        
+         if (usuarioExiste(nombreUsuario)) {
+            msg = "Nombre ya existe";
+        }
+         
+         if (mailExiste(mail)) {
+            msg = "Mail ya existe";
+        }
+        
+        return msg;
+    }
+
+    @Override
+    public boolean telefonoExiste(String telefono) {
+        boolean existe = false;
+
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM personas where telefonoMovil='" + telefono + "'");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (telefono.equals(rs.getString(6))) {
+                    existe = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al verificar usuario", ex);
+
+        }
+            
+        return existe;
+      
+        
+    }
+    
 
 }
 
@@ -146,29 +263,7 @@ try {
 //    }
 
 
-//@Override
-//    public boolean usuarioExiste(String usuario) {
-//        boolean existe=false;
-//        try {
-//            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
-//            PreparedStatement ps = con.prepareStatement("SELECT * FROM personas where nombre_usuario='"+usuario+"'");
-//            ResultSet rs = ps.executeQuery();
-//            
-//            if(rs.next()){
-//                if(usuario.equals(rs.getString(7))){
-//                existe=true;
-//            }
-//            }
-//            
-//            
-//            
-//            } catch (SQLException ex) {
-//                throw new RuntimeException("Error al verificar usuario", ex);
-//                
-//                  }
-//        
-//        return existe;
-//    }
+
 
 
 

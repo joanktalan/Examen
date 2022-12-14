@@ -6,6 +6,7 @@ package Examen.DAOS;
 
 import Examen.DTOS.PersonaDTO;
 import Examen.DTOS.ReclamoDTO;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -13,8 +14,10 @@ import java.util.Collection;
  * @author Joancito
  */
 public interface ReclamoDAO {
-      public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona);
-      public void agregarReclamo(ReclamoDTO reclamo);
+        public Collection<ReclamoDTO> obtenerReclamos(PersonaDTO persona);
+        public ArrayList<ReclamoDTO> obtenerReclamosArray(PersonaDTO persona);
+        public void agregarReclamo(ReclamoDTO reclamo);
+        public void borrarReclamo(int numReclamo);
 }
 
 

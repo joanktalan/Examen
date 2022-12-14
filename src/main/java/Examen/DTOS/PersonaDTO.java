@@ -50,6 +50,16 @@ public abstract class PersonaDTO {
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
+
+    public PersonaDTO(String dni, String nombre, String apellido, String mail, String telefonoMovil, String usuario, String contraseña) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.telefonoMovil = telefonoMovil;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+    }
     
     
     
@@ -78,23 +88,24 @@ public abstract class PersonaDTO {
     
     
     public abstract String getUrlVerLogins();
+    
        
     
     
-    //    public String getContraseña() {
-//        return contraseña;
-//    }
-//
-//    public String getDni() {
-//        return dni;
-//    }
-//
-//    public String getMail() {
-//        return mail;
-//    }
-//
-//    public String getTelefonoMovil() {
-//        return telefonoMovil;
-//    }
+        public String getContraseña() {
+        return contraseña;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getTelefonoMovil() {
+        return telefonoMovil;
+    }
     
 }

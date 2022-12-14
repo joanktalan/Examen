@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,7 +64,9 @@ public class VerReclamosServlet extends HttpServlet {
        
         
         PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
-        Collection<ReclamoDTO> reclamos = model.obtenerReclamos(persona);
+        ArrayList<ReclamoDTO> reclamos = (ArrayList<ReclamoDTO>) model.obtenerReclamos(persona);
+        
+        
         
         
         request.setAttribute("nombre",persona.getNombre());

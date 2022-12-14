@@ -7,6 +7,12 @@ public class ContribuyenteDTO extends PersonaDTO {
     public ContribuyenteDTO(int id, String dni, String nombre, String apellido, String mail, String telefonoMovil, String usuario, String contrasenia) {
         super(id, dni, nombre, apellido, mail, telefonoMovil, usuario, contrasenia);
     }
+
+    public ContribuyenteDTO(String dni, String nombre, String apellido, String mail, String telefonoMovil, String usuario, String contraseña) {
+        super(dni, nombre, apellido, mail, telefonoMovil, usuario, contraseña);
+    }
+    
+    
     
     
     @Override

@@ -74,6 +74,47 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
         return reclamos;
 
     }
+    
+    @Override
+    public ArrayList<ReclamoDTO> obtenerReclamosArray(PersonaDTO persona) {
+        ArrayList<ReclamoDTO> reclamos = new ArrayList<ReclamoDTO>();
+        try {
+
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            PreparedStatement ps = con.prepareStatement(persona.getSQL());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                int id = rs.getInt(1);
+                LocalDate fechaSeCreo = rs.getDate(2).toLocalDate();
+                
+                LocalDate fechaSeResolvio = null;
+                
+                if(rs.getDate(3)!=null){
+                    fechaSeResolvio = rs.getDate(3).toLocalDate();
+                }
+                
+               
+                Categoria categoria = Categoria.valueOf(rs.getString(4).toUpperCase());
+
+                String calle = rs.getString(5);
+                int altura = rs.getInt(6);
+                Domicilio domicilio = new Domicilio(calle, altura);
+
+                String descripcion = rs.getString(7);
+
+                int idUsuario = rs.getInt(8);
+
+                ReclamoDTO reclamo = new ReclamoDTO(id, fechaSeCreo, fechaSeResolvio, categoria, domicilio, descripcion, idUsuario);
+                reclamos.add(reclamo);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al obtener reclamo", ex);
+        }
+        return reclamos;
+
+    }
 
     @Override
     public void agregarReclamo(ReclamoDTO reclamo) {
@@ -98,7 +139,35 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
             throw new RuntimeException("Error al obtener reclamo", ex);
         }
     }
+    
+    @Override
+    public void borrarReclamo(int numReclamo) {
+        
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            
+            
+//            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
+//                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`descripcion`,`personaid1`)"
+//                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
+//                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getDescripcion() + "', '" + reclamo.getIdUsuario() + "')");
+
+            PreparedStatement ps = con.prepareStatement("DELETE FROM `usuariosyreclamos`.`reclamos` WHERE  `reclamoid`= "+ numReclamo);
+            
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al obtener reclamo", ex);
+        }
+    }
 }
+    
+    
+
+
+    
+
+
     
     
 //CODIGO EXTRA

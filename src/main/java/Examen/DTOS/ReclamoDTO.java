@@ -61,8 +61,18 @@ public class ReclamoDTO {
     public String getDescripcion() {
         return descripcion;
     }
-    
 
+    public LocalDate getFechaSeResolvio() {
+        return fechaSeResolvio;
+    }
+
+    public int getId() {
+        return id;
+    }
+    
+    
+    
+    
     public int getIdUsuario() {
         return idUsuario;
     }

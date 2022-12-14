@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 
             //Guardandando y seteando los datos y configuracion del usuario
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(20);
+            session.setMaxInactiveInterval(600);
             request.getSession().setAttribute("usuario", persona);
 
             String haciaDondeIba = request.getParameter("deDondeViene");
@@ -82,3 +82,5 @@ public class LoginServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

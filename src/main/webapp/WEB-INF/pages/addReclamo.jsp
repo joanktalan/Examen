@@ -3,7 +3,7 @@
     Created on : Nov 28, 2022, 6:53:31 PM
     Author     : Joancito
 --%>
-
+<jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

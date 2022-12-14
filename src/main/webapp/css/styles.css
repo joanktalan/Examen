@@ -55,19 +55,70 @@ justify-content:space-between;
 }
 
 #NombreYApe{
-    
+    margin:0px 0px 0px 570px;
+    width: 400px;
+    color: white;
+    font-family: lato;
 }
 
-#TituloReclamos{
-    
+#TituloReclamosResueltos{
+    margin:10px 0px 0px 270px;
+    width: 400px;
+    justify-content:right;
+    float:left;
+    color:white;
 }
 
-#tipoDatoReclamo{
-    
+#TituloReclamosPendientes{
+    margin:10px 0px 0px 840px;
+    color:white;
 }
 
-#reclamoIndividual{
+#tipoDatoReclamo1{
+    margin:10px 0px 0px 220px;
+    float:left;
+    width:300px;
+    word-spacing: 0.7em;
+  
+    color:white;
+}
+
+#tipoDatoReclamo2{
+    margin:10px 0px 0px 810px;
+    width:300px;
+    word-spacing: 0.7em;
+  
+    color:white;
+}
+
+#reclamoIndividual1{
+    margin:10px 100px 0px 150px;
+    float:left;
+    padding:10px;
+    width:400px;
+    border-radius: 5% 10px;
     
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(66 208 129 / 58%);
+}
+
+#reclamoIndividual2{
+    margin:10px 100px 0px 760px;
+    padding:10px;
+    width:350px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(208 66 66 / 58%);
+}
+
+#mensajeNoReclamos{
+  color:white;
+   margin:20px 530px  0px;
 }
 
 #TituloLogins{
