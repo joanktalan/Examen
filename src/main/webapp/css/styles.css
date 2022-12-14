@@ -74,6 +74,14 @@ justify-content:space-between;
     color:white;
 }
 
+#tipoDatoReclamo{
+    margin: 10px 530px  0px;
+    width:300px;
+    word-spacing: 0.7em;
+  
+    color:white;
+}
+
 #tipoDatoReclamo1{
     margin:10px 0px 0px 220px;
     float:left;
@@ -89,6 +97,18 @@ justify-content:space-between;
     word-spacing: 0.7em;
   
     color:white;
+}
+
+#reclamoIndividual{
+    margin: 20px 435px  0px;
+    padding:10px;
+    width:400px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(105 105 105 / 58%);
 }
 
 #reclamoIndividual1{
@@ -174,3 +194,39 @@ justify-content:space-between;
     box-sizing: border-box;
 }
 
+#tituloBorrarReclamo{
+     margin:10px 0px 0px 470px;
+    border: 3px solid #a3616100;
+    width: 400px;
+    justify-content:right;
+    color:white;
+}
+
+#botonBorrar{
+    margin:10px 100px 10px;
+    background-color: #be1111bd;
+    border: 3px solid #904c4c00;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 17px;
+    
+    
+}
+
+#botonBorrar:hover {
+  background-color: #900e0eba;
+}
+
+#botonBorrar:active {
+  background-color: rebeccapurple;
+  color: white;
+}
+
+#botonBorrar:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 5px rebeccapurple;
+  outline: none;
+}

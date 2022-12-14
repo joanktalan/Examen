@@ -29,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Joancito
  */
-@WebServlet(name = "DeleteReclamoServlet", urlPatterns = {"/reclamos/delete"})
-public class DeleteReclamoServlet extends HttpServlet {
+@WebServlet(name = "ModifyServlet", urlPatterns = {"/reclamos/modify"})
+public class ModifyReclamoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

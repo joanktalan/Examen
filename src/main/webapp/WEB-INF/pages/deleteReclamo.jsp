@@ -11,18 +11,20 @@
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        
-        <form action="/reclamos/delete" method="post">
-            <div id="formulario">
-                <div class="formDat"><input  type="text" id="reclamoBorrar" name="reclamoBorrar" placeholder="Numero de Reclamo" required></div>
-                <div class="button"><input type="submit" id="submit" value="X" ></div>
-            </div>
                 
-            <br>
+        <h1 id="tituloBorrarReclamo">Seleccione Reclamo a Borrar</h1>
+        
+        <p id="tipoDatoReclamo">Fecha de creacion Categoria Domicilio</p>
+        
             
             <ol>
                 <c:forEach items="${reclamos}" var="reclamo">
-                        <li id="reclamoIndividual1">"${reclamo.fechaSeCreo}"  "${reclamo.categoria}"  "${reclamo.inmueble}"</li>
+                        <li id="reclamoIndividual">"${reclamo.fechaSeCreo}"  "${reclamo.categoria}"  "${reclamo.inmueble}"
+                            <form action="/reclamos/delete" method="post">
+                        <button id="botonBorrar" name="boton" type="submit" value=${reclamo.id}>Eliminar Reclamo</button>
+                            </form>
+                        </li>
+                           
                 </c:forEach>
             </ol>
         

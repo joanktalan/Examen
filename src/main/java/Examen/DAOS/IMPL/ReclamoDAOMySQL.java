@@ -147,12 +147,8 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
             Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
             
             
-//            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
-//                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`descripcion`,`personaid1`)"
-//                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
-//                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getDescripcion() + "', '" + reclamo.getIdUsuario() + "')");
-
-            PreparedStatement ps = con.prepareStatement("DELETE FROM `usuariosyreclamos`.`reclamos` WHERE  `reclamoid`= "+ numReclamo);
+            PreparedStatement ps = con.prepareStatement("DELETE FROM `usuariosyreclamos`.`reclamos` WHERE"
+                    + "  `reclamoid`= "+ numReclamo);
             
             ps.executeUpdate();
 
