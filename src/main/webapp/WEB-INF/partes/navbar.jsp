@@ -40,6 +40,10 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/reclamos/delete">Borrar Reclamo</a>
                 </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/reclamos/modify">Modificar Reclamo</a>
+                </li>
+                
                  <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Cerrar Sesion</a>
                 </li>

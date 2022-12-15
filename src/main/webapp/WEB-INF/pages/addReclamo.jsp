@@ -16,24 +16,24 @@
         
         <form action="/reclamos/add" method="post">
             <div id="formulario">
-                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ALUMBRADO">
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ALUMBRADO" required>
                 <label for="categoria">ALUMBRADO</label><br>
                 </div>
                 
-                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ARBOLADO">
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="ARBOLADO" required>
                 <label for="categoria">ARBOLADO</label><br>
                 </div>
                 
-                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="LIMPIEZA">
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="LIMPIEZA" required>
                 <label for="categoria">LIMPIEZA</label><br>
                 </div>
                 
-                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="PLUVIAL">
+                <div class="formDatReclamo"><input type="radio" id="categoria" name="categoria" value="PLUVIAL" required>
                 <label for="categoria">PLUVIAL</label><br>
                 </div>
                 
-                <div class="formDatReclamo"><input type="text" id="calle" name="calle" placeholder="Calle" ></div>
-                <div class="formDatReclamo"><input type="text" id="altura" name="altura" placeholder="Altura" ></div>
+                <div class="formDatReclamo"><input type="text" id="calle" name="calle" placeholder="Calle"required ></div>
+                <div class="formDatReclamo"><input type="number" id="altura" name="altura" placeholder="Altura" required></div>
                 
                 <div class="button"><input type="submit" id="submit" value="Generar Reclamos" ></div>
                 

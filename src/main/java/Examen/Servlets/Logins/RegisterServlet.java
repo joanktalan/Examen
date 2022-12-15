@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Examen.Servlets;
+package Examen.Servlets.Logins;
 
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DAOS.IMPL.ReclamoDAOMySQL;
+import Examen.DTOS.ContribuyenteDTO;
 import Examen.DTOS.LoginDTO;
 import Examen.DTOS.PersonaDTO;
 import Examen.DTOS.ReclamoDTO;
@@ -16,7 +17,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Joancito
  */
-@WebServlet(name = "DeleteReclamoServlet", urlPatterns = {"/reclamos/delete"})
-public class DeleteReclamoServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/registrarse"})
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,16 +58,7 @@ public class DeleteReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
-
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
-            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
-
-            request.setAttribute("reclamos", reclamos);
-        
-        
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/deleteReclamo.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/register.jsp");
             vista.forward(request, response);
     }
 
@@ -83,19 +74,38 @@ public class DeleteReclamoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+        Modelo model = new Modelo (new PersonaDAOMySQL());
+         RequestDispatcher vista;
+        
+        String mail = (String) request.getParameter("mail") ;
+        String dni = (String) request.getParameter("dni") ;
+        String nombreUsuario = (String) request.getParameter("user");
+         String telefonoMovil = (String) request.getParameter("telefonoMovil")  ;
+        
+        String parametrosCorrectos = model.parametrosCorrectos(nombreUsuario,dni,mail,telefonoMovil);
+        
+        //CHEQUEAR SI HAY ERROR AL TENER EL PARAMETRO "mensajeRegistro" vacio
+          while(!"ok".equals(parametrosCorrectos)) {      
+            request.setAttribute("mensajeRegistro",model.parametrosCorrectos(nombreUsuario, dni, mail,telefonoMovil));
+            vista = request.getRequestDispatcher("/WEB-INF/pages/register.jsp");
+            vista.forward(request, response);
+        }
+        
+          if (parametrosCorrectos.equals("ok")) {
 
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
-            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
-        
-                int id;
-                id = Integer.parseInt(request.getParameter("boton"));
-                System.out.println(id);
-                model.borrarReclamo(id);
+            String nombre = (String) request.getParameter("nombre")  ;
+            String apellido = (String) request.getParameter("apellido")  ;
+            String contraseña = (String) request.getParameter("contrasenia")  ;
+       
+
+            PersonaDTO usuarioNuevo = new ContribuyenteDTO(dni, nombre, apellido, mail, telefonoMovil, nombreUsuario, contraseña);
             
+            model.añadirUsuario(usuarioNuevo);
+            
+            vista=request.getRequestDispatcher("/WEB-INF/views/operacionExitosa.jsp");
+            vista.forward(request, response);
+        }
         
-                //Vísta de la Pagina
-                doGet(request, response);
         
     }
 

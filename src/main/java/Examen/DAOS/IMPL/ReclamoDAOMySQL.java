@@ -147,13 +147,64 @@ public class ReclamoDAOMySQL implements ReclamoDAO {
             Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
             
             
-            PreparedStatement ps = con.prepareStatement("DELETE FROM `usuariosyreclamos`.`reclamos` WHERE"
-                    + "  `reclamoid`= "+ numReclamo);
+//            PreparedStatement ps = con.prepareStatement("INSERT INTO `usuariosyreclamos`.`reclamos"
+//                    + "` (`fechaSeCreo`, `categoria`, `calle`,`altura`,`descripcion`,`personaid1`)"
+//                    + " VALUES ('"+ reclamo.getFechaSeCreo() +"', '"+reclamo.getCategoria()+"', '"+reclamo.getInmueble().getCalle()+"'"
+//                            + ", '" + reclamo.getInmueble().getAltura() + "', '" + reclamo.getDescripcion() + "', '" + reclamo.getIdUsuario() + "')");
+
+            PreparedStatement ps = con.prepareStatement("DELETE FROM `usuariosyreclamos`.`reclamos` WHERE  `reclamoid`= "+ numReclamo);
             
             ps.executeUpdate();
 
         } catch (SQLException ex) {
             throw new RuntimeException("Error al obtener reclamo", ex);
+        }
+    }
+
+    @Override
+    public void modificarReclamo(ReclamoDTO reclamo) {
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            
+            
+            if(reclamo.getCategoria()!=null){
+                PreparedStatement actualizarCategoria = con.prepareStatement("UPDATE `usuariosyreclamos`.`reclamos`"
+                        + " SET `categoria`='" + reclamo.getCategoria() + "' WHERE  `reclamoid`=" + reclamo.getId());
+                actualizarCategoria.executeUpdate();
+            }
+            
+            if(!reclamo.getInmueble().getCalle().isBlank()){
+                PreparedStatement actualizarCalle = con.prepareStatement("UPDATE `usuariosyreclamos`.`reclamos`"
+                        + " SET `calle`='" + reclamo.getInmueble().getCalle() + "' WHERE  `reclamoid`=" + reclamo.getId());
+                actualizarCalle.executeUpdate();
+            }
+            
+            if(reclamo.getInmueble().getAltura()!=0){
+                PreparedStatement actualizarAltura = con.prepareStatement("UPDATE `usuariosyreclamos`.`reclamos`"
+                        + " SET `altura`=" +  reclamo.getInmueble().getAltura() +" WHERE  `reclamoid`="+reclamo.getId());
+                actualizarAltura.executeUpdate();
+            }
+            
+            
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al modificar reclamo", ex);
+        }
+    }
+
+    @Override
+    public void resolverReclamo(int numReclamo) {
+        try {
+            Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
+            
+            PreparedStatement actualizarCategoria = con.prepareStatement("UPDATE `usuariosyreclamos`.`reclamos` "
+                    + "SET `fechaSeResolvio` = '" +  LocalDate.now() + "' WHERE (`reclamoid` = '" + numReclamo + "');");
+                actualizarCategoria.executeUpdate();
+            
+            
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al resolver reclamo", ex);
         }
     }
 }

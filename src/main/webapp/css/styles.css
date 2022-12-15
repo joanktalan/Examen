@@ -75,9 +75,10 @@ justify-content:space-between;
 }
 
 #tipoDatoReclamo{
-    margin: 10px 530px  0px;
-    width:300px;
+    margin: 10px 494px  0px;
+    width:400px;
     word-spacing: 0.7em;
+    font-size:17px;
   
     color:white;
 }
@@ -101,8 +102,8 @@ justify-content:space-between;
 
 #reclamoIndividual{
     margin: 20px 435px  0px;
-    padding:10px;
-    width:400px;
+    padding:17px;
+    width:370px;
     border-radius: 5% 10px;
     
     color:white;
@@ -167,10 +168,29 @@ justify-content:space-between;
   
 }
 #formulario{
-  
-  padding:0% 40%;
+  padding:10% 20%;
   
 }
+
+
+.modificar{
+  }
+
+.modificar ul li{
+  list-style:none;
+  display:inline-block;
+  margin: 0 20px;
+}
+
+.modificar ul li a{
+  text-decoration:none;
+  color: #fff;
+  text-transform:uppercase;
+  
+}
+
+
+
 .formDat{
     margin:10px;
 }
@@ -194,10 +214,10 @@ justify-content:space-between;
     box-sizing: border-box;
 }
 
-#tituloBorrarReclamo{
-     margin:10px 0px 0px 470px;
+#tituloReclamoCentrado{
+     margin:10px 0px 0px 455px;
     border: 3px solid #a3616100;
-    width: 400px;
+    width: 450px;
     justify-content:right;
     color:white;
 }
@@ -227,6 +247,60 @@ justify-content:space-between;
 }
 
 #botonBorrar:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 5px rebeccapurple;
+  outline: none;
+}
+
+#botonModificar{
+    margin:10px 25px 10px;
+    background-color: #be1111bd;
+    border: 3px solid #904c4c00;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 17px;
+    
+    
+}
+
+#botonModificar:active {
+  background-color: rebeccapurple;
+  color: white;
+}
+
+#botonModificar:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 5px rebeccapurple;
+  outline: none;
+}
+
+#botonResolver{
+    margin:10px 100px 10px;
+    background-color: #be1111bd;
+    border: 3px solid #904c4c00;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 17px;
+    
+    
+}
+
+#botonResolver:hover {
+  background-color: #900e0eba;
+}
+
+#botonResolver:active {
+  background-color: rebeccapurple;
+  color: white;
+}
+
+#botonResolver:focus-visible {
   box-shadow: 0 0 0 2px white, 0 0 0 5px rebeccapurple;
   outline: none;
 }

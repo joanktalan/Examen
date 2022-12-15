@@ -12,7 +12,7 @@
     </head>
     <body>
                 
-        <h1 id="tituloBorrarReclamo">Seleccione Reclamo a Borrar</h1>
+        <h1 id="tituloReclamoCentrado">Seleccione Reclamo a Borrar</h1>
         
         <p id="tipoDatoReclamo">Fecha de creacion Categoria Domicilio</p>
         

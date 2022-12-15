@@ -46,6 +46,14 @@ public class ReclamoDTO {
         this.idUsuario=idUsuario;
     }
 
+    public ReclamoDTO(int id, Categoria categoria, Domicilio inmueble) {
+        this.id = id;
+        this.categoria = categoria;
+        this.inmueble = inmueble;
+    }
+     
+     
+
     public LocalDate getFechaSeCreo() {
         return fechaSeCreo;
     }

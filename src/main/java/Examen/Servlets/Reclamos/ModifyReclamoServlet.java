@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Examen.Servlets;
+package Examen.Servlets.Reclamos;
 
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DAOS.IMPL.ReclamoDAOMySQL;
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Joancito
  */
-@WebServlet(name = "AddReclamoServlet", urlPatterns = {"/reclamos/add"})
-public class AddReclamoServlet extends HttpServlet {
+@WebServlet(name = "ModifyReclamoServlet", urlPatterns = {"/reclamos/modify"})
+public class ModifyReclamoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +58,19 @@ public class AddReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/addReclamo.jsp");
+        
+//            if
+        
+        
+            Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+
+            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
+            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
+
+            request.setAttribute("reclamos", reclamos);
+        
+        
+            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/modifyReclamo.jsp");
             vista.forward(request, response);
     }
 
@@ -73,30 +86,47 @@ public class AddReclamoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Modelo model = new Modelo(new PersonaDAOMySQL(),new ReclamoDAOMySQL());
-        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
+        Modelo model = new Modelo(new ReclamoDAOMySQL());
         
+         //Id
+        int id = Integer.parseInt(request.getParameter("boton"));
         
-        //Cargando el reclamo
-        LocalDate fechaCreacion = LocalDate.now();
-        
-         //Veo si es obligatorio es tuUpperCase
-        
+         //Categoria
         String catego = request.getParameter("categoria");
-        System.out.println("------>>>>>>>" + catego);
-        Categoria categoria = Categoria.valueOf(catego.toUpperCase().trim());
+        Categoria categoria=null;
         
-        String calle = (String) request.getParameter("calle");
-        int altura = Integer.parseInt(request.getParameter("altura"));
+        if(catego!=null & id!=0){
+             categoria = Categoria.valueOf(catego);
+        }
+       
+        
+        //Domicilio
+        
+        String calle = null;
+        if ( request.getParameter("calle")!=null & id!=0){
+            calle=(String) request.getParameter("calle");
+        }
+                
+        
+        int altura=0;
+            
+        if(isNumeric(request.getParameter("altura")))
+            try {
+            altura = Integer.parseInt(request.getParameter("altura"));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        
         Domicilio domicilio = new Domicilio(calle,altura);
         
-        //String descripcion = (String) request.getParameter("descripcion");
-        
-        int id = persona.getId();
-        
         //Se añade el reclamo
-        ReclamoDTO reclamo = new ReclamoDTO(fechaCreacion,categoria,domicilio,id);
-        model.añadirReclamo(reclamo);
+        ReclamoDTO reclamo = new ReclamoDTO(id,categoria,domicilio);
+        model.modificarReclamo(reclamo);
+
+        
+        
+                //Vísta de la Pagina
+                doGet(request, response);
         
     }
 
@@ -110,4 +140,11 @@ public class AddReclamoServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    private static boolean isNumeric(String str){
+        return str != null && str.matches("[0-9.]+");
+    }
+    
+    
+    
 }

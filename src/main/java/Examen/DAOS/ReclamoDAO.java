@@ -18,6 +18,8 @@ public interface ReclamoDAO {
         public ArrayList<ReclamoDTO> obtenerReclamosArray(PersonaDTO persona);
         public void agregarReclamo(ReclamoDTO reclamo);
         public void borrarReclamo(int numReclamo);
+        public void resolverReclamo(int numReclamo);
+        public void modificarReclamo(ReclamoDTO reclamo);
 }
 
 

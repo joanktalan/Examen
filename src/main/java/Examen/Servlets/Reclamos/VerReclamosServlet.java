@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Examen.Servlets;
+package Examen.Servlets.Reclamos;
 
 import Examen.DAOS.IMPL.LoginDAOHardCode;
 import Examen.DAOS.IMPL.LoginDAOMySQL;
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
-@WebServlet(name = "ReclamosServlet", urlPatterns = {"/reclamos/all"})
+@WebServlet(name = "verReclamosServlet", urlPatterns = {"/reclamos/all"})
 public class VerReclamosServlet extends HttpServlet {
 
     /**
@@ -91,10 +91,22 @@ public class VerReclamosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-       
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+
+            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
+            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
         
-        processRequest(request, response);
-            }
+                int id;
+                id = Integer.parseInt(request.getParameter("boton"));
+                
+                model.resolverReclamo(id);
+            
+        
+                //Vísta de la Pagina
+                doGet(request, response);
+       
+    }
+        
 
     /**
      * Returns a short description of the servlet.

@@ -76,6 +76,14 @@ public class Modelo {
         reclamoDAO.borrarReclamo(numReclamo);
     }
     
+    public void modificarReclamo(ReclamoDTO reclamo){
+        reclamoDAO.modificarReclamo(reclamo);
+    }
+    
+    public void resolverReclamo(int numReclamo){
+        reclamoDAO.resolverReclamo(numReclamo);
+    }
+    
     //PERSONAS
     public PersonaDTO obtenerPersona(String usuario, String contraseña) {
         return personaDAO.obtenerPersona(usuario, contraseña);

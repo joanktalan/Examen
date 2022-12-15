@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Examen.Servlets;
+package Examen.Servlets.Reclamos;
 
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DAOS.IMPL.ReclamoDAOMySQL;
@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Joancito
  */
-@WebServlet(name = "ModifyServlet", urlPatterns = {"/reclamos/modify"})
-public class ModifyReclamoServlet extends HttpServlet {
+@WebServlet(name = "AddReclamoServlet", urlPatterns = {"/reclamos/add"})
+public class AddReclamoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,16 +57,7 @@ public class ModifyReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
-
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
-            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
-
-            request.setAttribute("reclamos", reclamos);
-        
-        
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/deleteReclamo.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/addReclamo.jsp");
             vista.forward(request, response);
     }
 
@@ -83,19 +73,32 @@ public class ModifyReclamoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+        Modelo model = new Modelo(new PersonaDAOMySQL(),new ReclamoDAOMySQL());
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
+        
+        
+        //Cargando el reclamo
+        LocalDate fechaCreacion = LocalDate.now();
+        
+         //Veo si es obligatorio es tuUpperCase
+        
+        String catego = request.getParameter("categoria");
 
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
-            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
+        Categoria categoria = Categoria.valueOf(catego);
         
-                int id;
-                id = Integer.parseInt(request.getParameter("boton"));
-                System.out.println(id);
-                model.borrarReclamo(id);
-            
+        String calle = (String) request.getParameter("calle");
+       
+        int altura = Integer.parseInt(request.getParameter("altura"));
         
-                //Vísta de la Pagina
-                doGet(request, response);
+        Domicilio domicilio = new Domicilio(calle,altura);
+        
+        //String descripcion = (String) request.getParameter("descripcion");
+        
+        int id = persona.getId();
+        
+        //Se añade el reclamo
+        ReclamoDTO reclamo = new ReclamoDTO(fechaCreacion,categoria,domicilio,id);
+        model.añadirReclamo(reclamo);
         
     }
 

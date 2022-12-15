@@ -18,8 +18,8 @@
                 
                 <div class="formDat"><input type="text" id="nombre" name="nombre" placeholder="Nombre/s" required></div>
                 <div class="formDat"><input type="text" id="apellido" name="apellido" placeholder="Apellido/s" required></div>
-                <div class="formDat"><input type="text" id="mail" name="mail" placeholder="Mail" required></div>
-                <div class="formDat"><input type="text" id="telefonoMovil" name="telefonoMovil" placeholder="Número Telefono" required></div>
+                <div class="formDat"><input type="email" id="mail" name="mail" placeholder="Mail" required></div>
+                <div class="formDat"><input type="tel" id="telefonoMovil" name="telefonoMovil" placeholder="Número Telefono" required></div>
                 <div class="formDat"><input type="text" id="dni" name="dni" placeholder="DNI" required></div>
                 <div class="formDat"><input  type="text" id="nombreUsuario" name="user" placeholder="Nombre de usuario"required></div>
                 <div class="formDat"><input type="password" id="contrasenia" name="contrasenia" placeholder="contraseña"required></div>
