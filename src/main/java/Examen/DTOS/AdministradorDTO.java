@@ -15,30 +15,29 @@ public class AdministradorDTO extends PersonaDTO {
     }
     
     @Override
-     public String getUrlDoGet(){
-        return "WEB-INF/pages/ingreseId.jsp";
+     public String getUrlDoGetLogins(){
+        return "/WEB-INF/pages/ingreseId.jsp";
     }
     
      @Override
     public String getUrlVerLogins(){
-        return "WEB-INF/views/vistaLogins.jsp";
+        return "/WEB-INF/views/vistaLogins.jsp";
     }
     
-    
-    //WORK IN PROGRESS
-     public void darAlta() {
+
+    @Override
+    public String getUrlBorrarReclamo() {
+         return "/WEB-INF/pages/deleteReclamo.jsp";
     }
 
-    public void darBaja() {
+    @Override
+    public String getUrlModificarReclamo() {
+        return "/WEB-INF/pages/modifyReclamo.jsp";
     }
 
-    public void modificarReclamo() {
-    }
-
-    public void consultaReclamo() {
-    }
-
-    public void resuelto() {
+    @Override
+    public String getUrlVerReclamosPendientes() {
+        return "/WEB-INF/views/vistaReclamosPendientes.jsp";
     }
     
     

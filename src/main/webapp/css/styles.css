@@ -168,7 +168,7 @@ justify-content:space-between;
   
 }
 #formulario{
-  padding:10% 20%;
+  padding:10px;
   
 }
 
@@ -195,6 +195,7 @@ justify-content:space-between;
     margin:10px;
 }
 .formDat input{
+    margin:0px 70px 10px 510px;
     padding:10px;
     width:300px;
     border-radius: 10px 5%;
@@ -208,6 +209,7 @@ justify-content:space-between;
   margin:20px 70px 10px 70px;
 }
 .button input{
+    margin:0px 70px 10px 510px;
     padding:10px;
     width:200px;
     border-radius: 5% 10px;
@@ -303,4 +305,113 @@ justify-content:space-between;
 #botonResolver:focus-visible {
   box-shadow: 0 0 0 2px white, 0 0 0 5px rebeccapurple;
   outline: none;
+}
+
+#TituloReclamosSoloPendientes{
+    margin:10px 0px 0px 560px;
+    color:white;
+}
+
+#tituloAlumbrado{
+    margin:10px 0px 0px 140px;
+    color:white;
+ 
+}
+
+#tituloPluvial{
+    margin:66px 0px 0px 160px;
+    color:white;
+}
+
+#tituloLimpieza{
+    margin:66px 0px 0px 160px;
+    color:white;
+}
+
+#tituloArbolado{
+    margin:66px 0px 0px 160px;
+    color:white;
+}
+
+#tipoDatoReclamoCuarto1{
+    margin:50px 100px 20px 40px;
+     color:white;
+    float:left;
+    word-spacing: 0.7em;
+}
+
+#reclamoIndividualAlumbrado{
+     margin:80px 0px 0px 0px;
+    padding:10px;
+    width:500px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(193 208 66 / 58%);
+}
+
+#tipoDatoReclamoCuarto2{
+   margin:50px 100px 20px 40px;
+  color:white;
+    float:left;
+    word-spacing: 0.7em;
+}
+
+#reclamoIndividualPluvial{
+     margin:80px 0px 0px 0px;
+    padding:10px;
+    width:500px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(66 123 208 / 58%);
+}
+
+#tipoDatoReclamoCuarto3{
+  margin:50px 100px 20px 40px;
+    color:white;
+    float:left;
+    word-spacing: 0.7em;
+}
+
+#reclamoIndividualLimpieza{
+     margin:80px 0px 0px 0px;
+    padding:10px;
+    width:500px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(186 66 208 / 58%);
+}
+
+#tipoDatoReclamoCuarto4{
+  margin:50px 100px 20px 40px;
+    color:white;
+    float:left;
+    word-spacing: 0.7em;
+}
+
+
+#reclamoIndividualArbolado{
+     margin:80px 0px 0px 0px;
+    padding:10px;
+    width:500px;
+    border-radius: 5% 10px;
+    
+    color:white;
+    justify-content:center;
+    font-family: arial;
+    background:rgb(95 208 66 / 58%);
+}
+
+
+#TituloRegistro{
+     margin:10px 0px 0px 560px;
+    color:white;
 }

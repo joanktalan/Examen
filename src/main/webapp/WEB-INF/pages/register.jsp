@@ -11,6 +11,8 @@
     
     <body>
         
+        <h1 id="TituloRegistro">REGISTRO:</h1>
+        
        <form action="/registrarse" method="post">
            
            

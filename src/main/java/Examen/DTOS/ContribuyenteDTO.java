@@ -22,19 +22,30 @@ public class ContribuyenteDTO extends PersonaDTO {
     }
     
     @Override
-     public String getUrlDoGet(){
-        return "WEB-INF/views/page401.jsp";
+     public String getUrlDoGetLogins(){
+        return "/WEB-INF/views/page401.jsp";
     }
     
      @Override
     public String getUrlVerLogins(){
-        return "WEB-INF/views/page401.jsp";
+        return "/WEB-INF/views/page401.jsp";
+    }
+    
+    @Override
+    public String getUrlBorrarReclamo(){
+        return "/WEB-INF/views/page401.jsp";
+    }
+    
+    @Override
+    public String getUrlModificarReclamo(){
+        return "/WEB-INF/views/page401.jsp";
+    }
+    
+    @Override
+    public String getUrlVerReclamosPendientes(){
+        return "/WEB-INF/views/page401.jsp";
     }
     
     
-    
-    //WORK IN PROGRESS
-    public void generarReclamo() {
-    }
     
 }

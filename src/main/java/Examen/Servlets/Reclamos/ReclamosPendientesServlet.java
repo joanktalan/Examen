@@ -4,18 +4,19 @@
  */
 package Examen.Servlets.Reclamos;
 
+import Examen.DAOS.IMPL.LoginDAOHardCode;
+import Examen.DAOS.IMPL.LoginDAOMySQL;
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
 import Examen.DAOS.IMPL.ReclamoDAOMySQL;
 import Examen.DTOS.LoginDTO;
 import Examen.DTOS.PersonaDTO;
 import Examen.DTOS.ReclamoDTO;
 import Examen.Modelo.Modelo;
-import Examen.Otros.Categoria;
-import Examen.Otros.Domicilio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,10 +27,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Joancito
+ * @author alumno
  */
-@WebServlet(name = "AddReclamoServlet", urlPatterns = {"/reclamos/add"})
-public class AddReclamoServlet extends HttpServlet {
+@WebServlet(name = "ReclamosPendientesServlet", urlPatterns = {"/reclamos/pending"})
+public class ReclamosPendientesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,7 +44,7 @@ public class AddReclamoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-    }
+            }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -57,8 +58,25 @@ public class AddReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/addReclamo.jsp");
-            vista.forward(request, response);
+        processRequest(request, response);
+        
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
+       
+        
+        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
+        ArrayList<ReclamoDTO> reclamos = (ArrayList<ReclamoDTO>) model.obtenerReclamos(persona);
+        
+        
+        
+        
+        request.setAttribute("nombre",persona.getNombre());
+        request.setAttribute("apellido",persona.getApellido());
+        request.setAttribute("reclamos",reclamos);
+        
+        //Vísta de la Pagina
+        RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlVerReclamosPendientes"));
+        vista.forward(request, response);
+
     }
 
     /**
@@ -73,40 +91,22 @@ public class AddReclamoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Modelo model = new Modelo(new PersonaDAOMySQL(),new ReclamoDAOMySQL());
-        PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario"); 
-        
-        
-        //Cargando el reclamo
-        LocalDate fechaCreacion = LocalDate.now();
-        
-         //Veo si es obligatorio es tuUpperCase
-        
-        String catego = request.getParameter("categoria");
+        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
 
-        Categoria categoria = Categoria.valueOf(catego);
+            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
+            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
         
-        categoria.toString().equals("LIMPIEZA");
+                int id;
+                id = Integer.parseInt(request.getParameter("boton"));
+                
+                model.resolverReclamo(id);
+            
         
-        String calle = (String) request.getParameter("calle");
+                //Vísta de la Pagina
+                doGet(request, response);
        
-        int altura = Integer.parseInt(request.getParameter("altura"));
-        
-        Domicilio domicilio = new Domicilio(calle,altura);
-        
-        //String descripcion = (String) request.getParameter("descripcion");
-        
-        int id = persona.getId();
-        
-        //Se añade el reclamo
-        ReclamoDTO reclamo = new ReclamoDTO(fechaCreacion,categoria,domicilio,id);
-        model.añadirReclamo(reclamo);
-        
-        RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/views/operacionExitosa.jsp");
-        vista.forward(request, response);
-        
-        
     }
+        
 
     /**
      * Returns a short description of the servlet.

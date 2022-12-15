@@ -28,8 +28,9 @@
         
         <br>
        
+        <!-- 
         <p>Desea usted registrarse? </p>
         <a class="nav-link" href="${pageContext.request.contextPath}/registrarse">Registrarse</a>
-       
+       -->
     </body>
 </html>

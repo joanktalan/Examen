@@ -67,7 +67,7 @@ public class DeleteReclamoServlet extends HttpServlet {
             request.setAttribute("reclamos", reclamos);
         
         
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/deleteReclamo.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlBorrarReclamo"));
             vista.forward(request, response);
     }
 

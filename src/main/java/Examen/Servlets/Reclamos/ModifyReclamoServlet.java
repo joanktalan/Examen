@@ -58,10 +58,7 @@ public class ModifyReclamoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//            if
-        
-        
+
             Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
 
             PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
@@ -70,7 +67,7 @@ public class ModifyReclamoServlet extends HttpServlet {
             request.setAttribute("reclamos", reclamos);
         
         
-            RequestDispatcher vista = request.getRequestDispatcher("/WEB-INF/pages/modifyReclamo.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlModificarReclamo"));
             vista.forward(request, response);
     }
 

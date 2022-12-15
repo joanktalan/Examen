@@ -61,8 +61,6 @@ public abstract class PersonaDTO {
         this.contraseña = contraseña;
     }
     
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -80,20 +78,24 @@ public abstract class PersonaDTO {
         return id;
     }
 
-
     public abstract String getSQL();
-        
-
-    public abstract String getUrlDoGet();
     
+    //Metodos distintivos para los tipo de usuarios    
+    
+    public abstract String getUrlDoGetLogins();
     
     public abstract String getUrlVerLogins();
     
+    public abstract String getUrlBorrarReclamo();
+    
+    public abstract String getUrlModificarReclamo();
+    
+    public abstract String getUrlVerReclamosPendientes();
        
     
     
-        public String getContraseña() {
-        return contraseña;
+    public String getContraseña() {
+       return contraseña;
     }
 
     public String getDni() {

@@ -64,7 +64,7 @@ public class VerLoginsServlet extends HttpServlet {
         PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
         
         if(request.getParameter("id")==null){
-            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlDoGet"));
+            RequestDispatcher vista = request.getRequestDispatcher((String)request.getSession().getAttribute("urlDoGetLogins"));
             vista.forward(request, response);
         }
         else{

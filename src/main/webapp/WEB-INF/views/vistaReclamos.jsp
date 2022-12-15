@@ -42,9 +42,6 @@
 
                     <c:if test="${reclamo.fechaSeResolvio == null}">
                         <li id="reclamoIndividual2">"${reclamo.fechaSeCreo}"  "${reclamo.categoria}"  "${reclamo.inmueble}"
-                         <form action="/reclamos/all" method="post">
-                        <button id="botonResolver" name="boton" type="submit" value=${reclamo.id}>Resolver Reclamo</button>
-                            </form>
                         </li>
                         </c:if>
 

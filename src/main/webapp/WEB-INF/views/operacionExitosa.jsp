@@ -8,11 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="refresh" content="5; url=${pageContext.request.contextPath}/>
         <link rel="stylesheet" href="/css/styles.css">
         <title>EXITO!</title>
     </head>
     <body>
-        <h1>Operacion hecha satisfactoriamente!</h1>
+        <h1 style="color:#000000">>Operacion hecha satisfactoriamente!</h1>
+          
     </body>
 </html>

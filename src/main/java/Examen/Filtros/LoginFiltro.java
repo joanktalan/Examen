@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Joancito
  */
-@WebFilter(filterName = "LoginFiltro", urlPatterns = {"/reclamos/all", "/verLogins", "/reclamos/add","/reclamos/delete","/reclamos/modify"})
+@WebFilter(filterName = "LoginFiltro", urlPatterns = {"/reclamos/all", "/verLogins", "/reclamos/add","/reclamos/delete","/reclamos/modify","/reclamos/pending"})
 public class LoginFiltro implements Filter {
     
     private static final boolean debug = true;
@@ -42,15 +42,43 @@ public class LoginFiltro implements Filter {
         System.out.println();
 
         if (session != null && session.getAttribute("usuario") != null) {
-            if(httpRequest.getServletPath().contentEquals("/verLogins")){
+            PersonaDTO persona = (PersonaDTO) session.getAttribute("usuario");
+            
+            //Filtro dependiendo si es admin o no
+            
+            switch (httpRequest.getServletPath()) {
                 
-                PersonaDTO persona = (PersonaDTO) session.getAttribute("usuario"); 
+                case "/verLogins":
+                    
+                    String urlDoGet = persona.getUrlDoGetLogins();
+                    String urlVerLogins = persona.getUrlVerLogins();
                 
-                String urlDoGet = persona.getUrlDoGet();
-                String urlVerLogins = persona.getUrlVerLogins();
-                
-                session.setAttribute("urlDoGet", urlDoGet);
-                session.setAttribute("urlVerLogins", urlVerLogins);
+                    session.setAttribute("urlDoGetLogins", urlDoGet);
+                    session.setAttribute("urlVerLogins", urlVerLogins);
+                    
+                    break;
+                    
+                case "/reclamos/pending":
+                    
+                    String urlVerReclamosPendientes = persona.getUrlVerReclamosPendientes();
+                    session.setAttribute("urlVerReclamosPendientes", urlVerReclamosPendientes);
+                    
+                    break;
+                   
+                case "/reclamos/delete":
+                    
+                    String urlBorrarReclamo = persona.getUrlBorrarReclamo();
+                    session.setAttribute("urlBorrarReclamo", urlBorrarReclamo);
+
+                    break;
+                case "/reclamos/modify":
+                    
+                    String urlModificarReclamo = persona.getUrlModificarReclamo();
+                    session.setAttribute("urlModificarReclamo", urlModificarReclamo);
+
+                    break;
+                    
+               
             }
             chain.doFilter(request, response); // Ir al siguiente en la cadena de filters
             //en caso de que no haya uno va directo a una de esas paginas....

@@ -90,21 +90,7 @@ public class VerReclamosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Modelo model = new Modelo(new PersonaDAOMySQL(), new ReclamoDAOMySQL());
-
-            PersonaDTO persona = (PersonaDTO) request.getSession().getAttribute("usuario");
-            ArrayList<ReclamoDTO> reclamos =  model.obtenerReclamosArray(persona);
-        
-                int id;
-                id = Integer.parseInt(request.getParameter("boton"));
-                
-                model.resolverReclamo(id);
-            
-        
-                //Vísta de la Pagina
-                doGet(request, response);
-       
+               processRequest(request, response);
     }
         
 
