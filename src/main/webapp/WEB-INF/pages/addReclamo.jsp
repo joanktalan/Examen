@@ -4,6 +4,7 @@
     Author     : Joancito
 --%>
 <jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/partes/navbarReclamos.jsp"></jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

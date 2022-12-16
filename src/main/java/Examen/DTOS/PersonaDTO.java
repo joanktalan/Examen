@@ -91,7 +91,8 @@ public abstract class PersonaDTO {
     public abstract String getUrlModificarReclamo();
     
     public abstract String getUrlVerReclamosPendientes();
-       
+    
+    public abstract boolean tieneNavbar();
     
     
     public String getContraseña() {

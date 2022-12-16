@@ -1,5 +1,5 @@
 <jsp:include page="WEB-INF/partes/navbar.jsp" />
-
+<jsp:include page="/WEB-INF/partes/navbarAdmin.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1 color:white >Bienvenido!</h1>
+        <h1 id="bienvenido" >Bienvenido!</h1>
     </body>
 </html>

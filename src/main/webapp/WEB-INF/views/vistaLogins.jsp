@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/partes/navbar.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/partes/navbarReclamos.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
     

@@ -85,6 +85,9 @@ public class LoginFiltro implements Filter {
 
         } else {
             
+            
+           
+            
             //este codigo es para enviarte a otra pagina en caso de que hayas ingresado mal las cosas...
             // httpRequest.getServletPath() me trae el servlet/jsp de origen, por ejemplo, "/perfil" o "/restringida"
             String origen = httpRequest.getServletPath();

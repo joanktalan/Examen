@@ -13,7 +13,7 @@
         <title>EXITO!</title>
     </head>
     <body>
-        <h1 style="color:#000000">>Operacion hecha satisfactoriamente!</h1>
+        <h1 id="OperacionSatisfactoria">Operacion hecha satisfactoriamente!</h1>
           
     </body>
 </html>

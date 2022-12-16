@@ -40,6 +40,9 @@ public class AdministradorDTO extends PersonaDTO {
         return "/WEB-INF/views/vistaReclamosPendientes.jsp";
     }
     
-    
+    @Override
+    public boolean tieneNavbar() {
+        return true;
+    }
     
 }

@@ -96,7 +96,6 @@ justify-content:space-between;
     margin:10px 0px 0px 810px;
     width:300px;
     word-spacing: 0.7em;
-  
     color:white;
 }
 
@@ -414,4 +413,51 @@ justify-content:space-between;
 #TituloRegistro{
      margin:10px 0px 0px 560px;
     color:white;
+}
+
+
+.nav-item2{
+    padding: 0px 0px 0px 0px;
+    color:white;
+    font-family: arial;
+   
+}
+
+
+
+.navbar2{
+  
+width:85%;
+margin:auto;
+display: flex;
+align-items:center;
+justify-content:space-between;
+  }
+
+.navbar2 ul li{
+  
+  list-style:none;
+  display:inline-block;
+  margin: 0 20px;
+}
+
+.navbar2 ul li a{
+   margin:10px 26px ;
+  text-decoration:none;
+  color: #fff;
+  text-transform:uppercase;
+  font-size:small;
+
+    border: 3px solid #16520cc2;
+    border-radius: 8px;
+}
+
+#bienvenido{
+    color: white;
+    font-family: lato;
+}
+
+#OperacionSatisfactoria{
+    color: white;
+    font-family: lato;
 }

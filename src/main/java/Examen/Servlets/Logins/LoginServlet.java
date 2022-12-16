@@ -7,6 +7,7 @@ package Examen.Servlets.Logins;
 import Examen.DAOS.IMPL.LoginDAOHardCode;
 import Examen.DAOS.IMPL.LoginDAOMySQL;
 import Examen.DAOS.IMPL.PersonaDAOMySQL;
+import Examen.DTOS.AdministradorDTO;
 import Examen.DTOS.LoginDTO;
 import Examen.DTOS.PersonaDTO;
 import Examen.Modelo.Modelo;
@@ -65,6 +66,11 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(600);
             request.getSession().setAttribute("usuario", persona);
+            request.getSession().setAttribute("sesionIniciada", true);
+             request.getSession().setAttribute("tieneNavbar", persona.tieneNavbar());
+            
+               
+            
 
             String haciaDondeIba = request.getParameter("deDondeViene");
             response.sendRedirect(request.getContextPath() + haciaDondeIba);

@@ -45,6 +45,11 @@ public class ContribuyenteDTO extends PersonaDTO {
     public String getUrlVerReclamosPendientes(){
         return "/WEB-INF/views/page401.jsp";
     }
+
+    @Override
+    public boolean tieneNavbar() {
+        return false;
+    }
     
     
     
