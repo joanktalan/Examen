@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   UNIQUE KEY `idlogin_UNIQUE` (`idlogin`),
   KEY `personaid2_idx` (`personaid2`),
   CONSTRAINT `personaid2` FOREIGN KEY (`personaid2`) REFERENCES `personas` (`personaid`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table usuariosyreclamos.logins: ~49 rows (approximately)
 INSERT INTO `logins` (`idlogin`, `date`, `time`, `personaid2`) VALUES
@@ -84,11 +84,15 @@ INSERT INTO `logins` (`idlogin`, `date`, `time`, `personaid2`) VALUES
 	(51, '2022-11-23', '18:19:59', 3),
 	(52, '2022-11-23', '18:20:41', 3),
 	(53, '2022-11-23', '18:23:26', 3),
-	(54, '2022-11-23', '18:29:54', 2);
+	(54, '2022-11-23', '18:29:54', 2),
+	(55, '2022-11-28', '17:48:55', 2),
+	(56, '2022-11-28', '17:53:13', 3),
+	(57, '2022-11-28', '17:57:09', 3),
+	(58, '2022-11-28', '18:47:09', 2);
 
 -- Dumping structure for table usuariosyreclamos.personas
 CREATE TABLE IF NOT EXISTS `personas` (
-  `personaid` int NOT NULL,
+  `personaid` int NOT NULL AUTO_INCREMENT,
   `dni` varchar(15) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
@@ -100,35 +104,52 @@ CREATE TABLE IF NOT EXISTS `personas` (
   PRIMARY KEY (`personaid`),
   UNIQUE KEY `nombreUsuario_UNIQUE` (`nombre_usuario`),
   UNIQUE KEY `personaid_UNIQUE` (`personaid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table usuariosyreclamos.personas: ~3 rows (approximately)
+-- Dumping data for table usuariosyreclamos.personas: ~7 rows (approximately)
 INSERT INTO `personas` (`personaid`, `dni`, `nombre`, `apellido`, `mail`, `telefonoMovil`, `nombre_usuario`, `contrasenia`, `esAdmin`) VALUES
 	(1, '55487621', 'romeo', 'santos', 'romeosantos@gmail.com', '00000000', 'romeoSantito', '1234', 0),
 	(2, '33421675', 'ricky', 'martin', 'rickymartin@gmail.com', '11111111', 'rickyElMartin', '12345', 0),
-	(3, '65123458', 'alejandro', 'sanz', 'alesanz@outlook.com', '02316554', 'AleSanz', '123456', 1);
+	(3, '65123458', 'alejandro', 'sanz', 'alesanz@outlook.com', '02316554', 'AleSanz', '123456', 1),
+	(5, '42548987', 'dante', 'zalazar', 'dante.zalazar@gmail.com', '1124896815', 'danteZalazar', '123456789', NULL),
+	(9, '51385942', 'Juan', 'Carlos', 'juancarlos@gmail.com', '555000666', 'juan2020', '1234', NULL),
+	(10, '11282864', 'Doña', 'Florinda', 'doña.florinda@hotmail.com', '555666777', 'doñaFlorinda', '1234', NULL),
+	(11, '43054666', 'Dante', 'Nishi', 'dante1204@gmail.com', '1134386000', 'DanteLin', '2103', NULL);
 
 -- Dumping structure for table usuariosyreclamos.reclamos
 CREATE TABLE IF NOT EXISTS `reclamos` (
-  `reclamoid` int NOT NULL,
+  `reclamoid` int NOT NULL AUTO_INCREMENT,
   `fechaSeCreo` date DEFAULT NULL,
   `fechaSeResolvio` date DEFAULT NULL,
   `categoria` varchar(20) NOT NULL,
-  `calle` varchar(100) NOT NULL,
-  `altura` int NOT NULL,
-  `descripcion` varchar(200) NOT NULL,
+  `calle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `altura` int DEFAULT NULL,
+  `descripcion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `personaid1` int NOT NULL,
   PRIMARY KEY (`reclamoid`,`personaid1`),
   UNIQUE KEY `reclamoid_UNIQUE` (`reclamoid`),
   KEY `personaid1_idx` (`personaid1`),
   CONSTRAINT `personaid1` FOREIGN KEY (`personaid1`) REFERENCES `personas` (`personaid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table usuariosyreclamos.reclamos: ~3 rows (approximately)
+-- Dumping data for table usuariosyreclamos.reclamos: ~16 rows (approximately)
 INSERT INTO `reclamos` (`reclamoid`, `fechaSeCreo`, `fechaSeResolvio`, `categoria`, `calle`, `altura`, `descripcion`, `personaid1`) VALUES
 	(1, '2020-10-02', '2020-10-06', 'ALUMBRADO', 'Lope de Vega', 3600, 'luz calle rota', 2),
-	(2, '2020-11-01', '2020-11-05', 'ARBOLADO', 'Lope de Vega', 3700, 'Arbol callo sobre mi', 2),
-	(3, '2021-03-04', '2021-03-08', 'LIMPIEZA', 'Jonte', 1233, 'tacho basura roto', 1);
+	(2, '2020-11-01', '2020-11-05', 'PLUVIAL', 'Lope de Vega', 3700, 'Arbol callo sobre mi', 2),
+	(3, '2021-03-04', '2021-03-08', 'LIMPIEZA', 'Jonte', 1233, 'tacho basura roto', 1),
+	(13, '2022-12-14', '2022-12-15', 'ALUMBRADO', 'Mercedes', 444, NULL, 3),
+	(14, '2022-12-14', NULL, 'ALUMBRADO', 'Marianito', 2, NULL, 3),
+	(15, '2022-12-14', '2022-12-15', 'PLUVIAL', 'Mariano', 6, NULL, 3),
+	(18, '2022-12-15', NULL, 'ALUMBRADO', 'Tinogasta', 1246, NULL, 3),
+	(19, '2022-12-15', NULL, 'ARBOLADO', 'Moron', 1856, NULL, 3),
+	(20, '2022-12-15', NULL, 'LIMPIEZA', 'Ituzaingo', 1225, NULL, 3),
+	(21, '2022-12-15', NULL, 'PLUVIAL', 'Posadas', 1052, NULL, 3),
+	(22, '2022-12-15', NULL, 'ALUMBRADO', 'Av Independencia ', 1326, NULL, 3),
+	(23, '2022-12-15', NULL, 'ALUMBRADO', 'Av Doctor Honorio Pueyrredón', 924, NULL, 3),
+	(24, '2022-12-15', NULL, 'ARBOLADO', 'Av Santa Fe', 702, NULL, 3),
+	(25, '2022-12-15', NULL, 'LIMPIEZA', 'Av L. Lugones', 395, NULL, 3),
+	(26, '2022-12-15', NULL, 'PLUVIAL', 'Adolfo Alsina', 2369, NULL, 3),
+	(27, '2022-12-15', NULL, 'PLUVIAL', 'Avellaneda', 300, NULL, 3);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
