@@ -461,3 +461,41 @@ justify-content:space-between;
     color: white;
     font-family: lato;
 }
+
+
+#formulario2{
+    padding:10px;
+}
+
+.formDatReclamo2{
+    margin:10px;
+}
+
+.formDat2 input{
+    margin:0px 70px 10px 510px;
+    padding:10px;
+    width:300px;
+    border-radius: 10px 5%;
+  background-color: #000;
+  color:white;
+}
+.formDat2 input::placeholder{
+    color:white
+}
+
+.button2{
+    margin:20px 70px 10px 70px;
+}
+
+
+#submit2{
+    
+}
+
+.button2 input{
+    margin:0px 70px 10px 510px;
+    padding:10px;
+    width:200px;
+    border-radius: 5% 10px;
+    box-sizing: border-box;
+}

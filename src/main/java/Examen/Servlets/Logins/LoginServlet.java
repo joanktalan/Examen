@@ -68,6 +68,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("usuario", persona);
             request.getSession().setAttribute("sesionIniciada", true);
              request.getSession().setAttribute("tieneNavbar", persona.tieneNavbar());
+             request.getSession().setAttribute("nomUsuario", persona.getUsuario());
             
                
             
