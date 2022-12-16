@@ -1,5 +1,5 @@
 <jsp:include page="WEB-INF/partes/navbar.jsp" />
-<jsp:include page="/WEB-INF/partes/navbarAdmin.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/partes/navbarReclamos.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
     <head>
