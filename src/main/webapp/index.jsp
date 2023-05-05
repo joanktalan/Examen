@@ -1,6 +1,6 @@
-<%@page language="java" pageEncoding="UTF-8" %>
 <jsp:include page="WEB-INF/partes/navbar.jsp" />
 <jsp:include page="/WEB-INF/partes/navbarReclamos.jsp"></jsp:include>
+<%@page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
